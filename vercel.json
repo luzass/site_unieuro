@@ -1,12 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/medicina",
-      "destination": "https://site-unieuro-6ts9.vercel.app"
-    },
-    {
-      "source": "/medicina/:path*",
-      "destination": "https://site-unieuro-6ts9.vercel.app/:path*"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
