@@ -1,0 +1,350 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Unieuro Medicina — Design System
+ * Cores institucionais, tipografia (Oswald + Inter) e tokens semânticos.
+ * Todas as cores em oklch. Use sempre tokens, nunca cores cruas em componentes.
+ */
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-offwhite: var(--offwhite);
+  --color-badge-red: var(--badge-red);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-display: "Mulish", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Mulish", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+
+  --shadow-elegant: 0 12px 40px -16px color-mix(in oklab, var(--navy) 35%, transparent);
+  --shadow-card: 0 2px 12px -4px color-mix(in oklab, var(--navy) 18%, transparent);
+  --color-black-deep: var(--black-deep);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand colors (oklch equivalents) */
+  --navy: oklch(0.245 0.06 258);            /* #0E2240 */
+  --navy-foreground: oklch(1 0 0);
+  --navy-soft: oklch(0.295 0.055 258);      /* #1A2B45 */
+  --gold: oklch(0.74 0.105 84);             /* #C9A961 */
+  --gold-foreground: oklch(0.245 0.06 258);
+  --offwhite: oklch(0.97 0.005 95);         /* #F5F5F0 */
+  --badge-red: oklch(0.55 0.21 27);         /* #C8242C */
+
+  /* Semantic mapping */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.245 0.06 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.245 0.06 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.245 0.06 258);
+  --primary: var(--navy);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--offwhite);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.96 0.005 95);
+  --muted-foreground: oklch(0.45 0.025 258);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: var(--badge-red);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 258);
+  --input: oklch(0.92 0.008 258);
+  --ring: var(--gold);
+
+  --chart-1: var(--navy);
+  --chart-2: var(--gold);
+  --chart-3: var(--navy-soft);
+  --chart-4: var(--badge-red);
+  --chart-5: oklch(0.6 0.04 258);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: var(--navy);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--offwhite);
+  --sidebar-accent-foreground: var(--navy);
+  --sidebar-border: oklch(0.9 0.01 258);
+  --sidebar-ring: var(--gold);
+  --black-deep: oklch(0.13 0.02 258);
+}
+
+.dark {
+  --background: var(--navy);
+  --foreground: oklch(1 0 0);
+  --card: var(--navy-soft);
+  --card-foreground: oklch(1 0 0);
+  --popover: var(--navy-soft);
+  --popover-foreground: oklch(1 0 0);
+  --primary: var(--gold);
+  --primary-foreground: var(--navy);
+  --secondary: var(--navy-soft);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: var(--navy-soft);
+  --muted-foreground: oklch(0.78 0.02 258);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: var(--badge-red);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    input,
+    textarea,
+    select {
+      font-size: inherit;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-rendering: optimizeLegibility;
+    font-display: swap;
+  }
+
+  @media (max-width: 768px) {
+    /* Reduz blur de sombras pesadas em mobile (custosas para GPU) */
+    .shadow-card,
+    .shadow-elegant {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+  }
+
+  /* Reduced motion: desliga todas as animações pesadas */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .fade-in-up {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  ::selection {
+    background-color: rgba(201, 169, 97, 0.3);
+    color: var(--navy);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(14, 34, 64, 0.2);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 169, 97, 0.5);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--gold) !important;
+    box-shadow: 
+      0 0 0 3px rgba(201, 169, 97, 0.15),
+      0 0 20px rgba(201, 169, 97, 0.1);
+    transition: 
+      border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.cursor-glow,
+[data-cta-button],
+.embla__slide {
+  will-change: transform;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@layer components {
+  .container-lp {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-lp {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-lp {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Linha pontilhada vertical dourada — elemento gráfico recorrente */
+  .dotted-rule {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    border-left: 1px dotted var(--gold);
+  }
+
+  .overlay-navy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(14, 34, 64, 0.55);
+    pointer-events: none;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1), transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  [data-animate] {
+    will-change: opacity, transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .fade-in-up {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Reduz blur de sombras em mobile */
+    .shadow-card,
+    .shadow-elegant {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+  }
+}
