@@ -92,9 +92,14 @@
               <form id="leadFormHero" class="lead-form flex flex-col gap-5" data-form="hero">
                 <div class="flex flex-col gap-3">
                   <div><input type="text" name="nome" placeholder="Nome completo" class="field h-12 w-full rounded-md border-[1.5px] border-gray-300 bg-white px-4 text-[16px] text-navy placeholder:text-gray-400 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"><p class="error mt-1 text-[11px] font-semibold text-badge-red"></p></div>
+
                   <div><input type="tel" name="whatsapp" inputmode="numeric" placeholder="WhatsApp com DDD" class="field h-12 w-full rounded-md border-[1.5px] border-gray-300 bg-white px-4 text-[16px] text-navy placeholder:text-gray-400 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20"><p class="error mt-1 text-[11px] font-semibold text-badge-red"></p></div>
+
                   <div><label class="flex cursor-pointer items-start gap-2.5"><input type="checkbox" name="aceite" class="mt-0.5 h-4 w-4 accent-gold"><span class="text-[12px] leading-snug text-navy-soft">Concordo em receber contato do Unieuro e aceito a Política de Privacidade.</span></label><p class="error mt-1 text-[11px] font-semibold text-badge-red"></p></div>
+                </div>
+
                 <button type="submit" class="cta-shine relative h-14 w-full overflow-hidden rounded-md bg-gold font-display text-[14px] font-extrabold uppercase tracking-[.5px] text-navy shadow-[0_4px_16px_rgba(201,169,97,.25)] hover:shadow-[0_8px_30px_rgba(201,169,97,.45)]"><span class="relative z-10">SOLICITAR ANÁLISE DE TRANSFERÊNCIA</span></button>
+
                 <p class="text-center text-[11px] text-gray-500">Análise gratuita. Sem compromisso de matrícula.</p>
               </form>
               <div class="success-message hidden min-h-[300px] flex-col items-center justify-center text-center">
@@ -195,7 +200,7 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Centro Universitário Unieuro","description":"Curso de Medicina do Unieuro em Brasília com transferência externa aberta para 2026.2.","address":{"@type":"PostalAddress","addressLocality":"Brasília","addressRegion":"DF","addressCountry":"BR"}}</script>
 
-  <script>
+<script>
   const WEBHOOK_URL = "https://casa-oceano-n8n.cj1us3.easypanel.host/webhook/inscricao_med";
   const REDIRECT_URL = "https://portaldoaluno.grupoceuma.com.br/FrameHTML/web/app/Edu/PortalProcessoSeletivo/?c=2&f=1ct=23&ps=512#/es/inscricoeswizard/dados-basicos";
   const WHATSAPP_PHONE = "556134455800";
@@ -250,18 +255,18 @@
 
       let ok = true;
 
-      if (!nome.value.trim() || nome.value.trim().length < 3) {
+      if (!nome || !nome.value.trim() || nome.value.trim().length < 3) {
         setError(nome, 'Informe seu nome completo.');
         ok = false;
       }
 
-      if (!/^\(\d{2}\) \d{5}-\d{4}$/.test(whatsapp.value.trim())) {
+      if (!whatsapp || !/^\(\d{2}\) \d{5}-\d{4}$/.test(whatsapp.value.trim())) {
         setError(whatsapp, 'WhatsApp inválido. Use (DD) 99999-9999.');
         ok = false;
       }
 
-      if (!aceite.checked) {
-        const errorAceite = aceite.closest('div')?.querySelector('.error');
+      if (!aceite || !aceite.checked) {
+        const errorAceite = aceite?.closest('div')?.querySelector('.error');
 
         if (errorAceite) {
           errorAceite.textContent = 'Você precisa aceitar os termos.';
@@ -326,6 +331,128 @@
         }
       }
     });
+  });
+
+  document.querySelectorAll('.reset-form').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.success-message')?.parentElement;
+      if (!card) return;
+
+      const success = card.querySelector('.success-message');
+      const form = card.querySelector('.lead-form');
+
+      if (success) {
+        success.classList.add('hidden');
+        success.classList.remove('flex');
+      }
+
+      if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+      }
+    });
+  });
+
+  document.querySelectorAll('.scroll-to-form').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('formulario-hero')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.faq-item')?.classList.toggle('open');
+    });
+  });
+
+  const slides = [
+    { label: 'Campus Asa Sul', caption: 'Prédio exclusivo de Medicina' },
+    { label: 'Laboratório', caption: 'Simulação realística com manequins de alta fidelidade' },
+    { label: 'Clínica-escola', caption: 'Atendimento ambulatorial real desde os primeiros semestres' },
+    { label: 'Aula prática', caption: 'Habilidades clínicas em ambiente preparado' },
+    { label: 'Biblioteca', caption: 'Acervo físico e digital integrado' }
+  ];
+
+  const imgs = document.querySelectorAll('.carousel-img');
+  const dotsBox = document.getElementById('carouselDots');
+  let current = 0;
+
+  function showSlide(i) {
+    if (!imgs.length || !dotsBox) return;
+
+    current = (i + imgs.length) % imgs.length;
+
+    imgs.forEach((img, idx) => {
+      img.style.opacity = idx === current ? '1' : '0';
+    });
+
+    const label = document.getElementById('carouselLabel');
+    const caption = document.getElementById('carouselCaption');
+
+    if (label) label.textContent = slides[current].label;
+    if (caption) caption.textContent = slides[current].caption;
+
+    dotsBox.querySelectorAll('button').forEach((dot, idx) => {
+      dot.className = 'h-1.5 rounded-full transition-all ' + (idx === current ? 'w-8 bg-gold' : 'w-1.5 bg-navy/25');
+    });
+  }
+
+  if (dotsBox && imgs.length) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'h-1.5 rounded-full transition-all ' + (i === 0 ? 'w-8 bg-gold' : 'w-1.5 bg-navy/25');
+      dot.addEventListener('click', () => showSlide(i));
+      dotsBox.appendChild(dot);
+    });
+
+    document.getElementById('prevSlide')?.addEventListener('click', () => showSlide(current - 1));
+    document.getElementById('nextSlide')?.addEventListener('click', () => showSlide(current + 1));
+
+    setInterval(() => showSlide(current + 1), 5500);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const header = document.getElementById('siteHeader');
+
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+
+    header.classList.toggle('bg-black-deep/95', window.scrollY > 50);
+    header.classList.toggle('border-gold/30', window.scrollY > 50);
+  });
+
+  const whatsBox = document.getElementById('whatsappBox');
+
+  document.getElementById('toggleWhatsapp')?.addEventListener('click', () => {
+    whatsBox?.classList.toggle('hidden');
+  });
+
+  document.getElementById('closeWhatsapp')?.addEventListener('click', () => {
+    whatsBox?.classList.add('hidden');
+  });
+
+  document.getElementById('sendWhatsapp')?.addEventListener('click', () => {
+    const msg = document.getElementById('whatsappMsg')?.value.trim() || '';
+    window.open(`https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}${msg ? '&text=' + encodeURIComponent(msg) : ''}`, '_blank', 'noopener,noreferrer');
+  });
+
+  document.getElementById('whatsappMsg')?.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      document.getElementById('sendWhatsapp')?.click();
+    }
   });
 </script>
 </body>
