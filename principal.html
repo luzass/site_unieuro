@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unieuro - Vestibular</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        .hero-bg {
+        /* Mantive o filtro escuro (linear-gradient) por cima da foto */
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('./assets/background.webp'); /* Caminho da sua foto */
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+        }
+    </style>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/favicon/android-chrome-512x512.png">
+    <link rel="shortcut icon" href="./assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+</head>
+<body class="bg-[#004181]">
+
+<header class="bg-[#004181] text-white py-4 px-8 sticky top-0 z-50 shadow-md">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <img src="./assets/logo2.webp" 
+                 alt="Unieuro" 
+                 class="h-10 w-auto object-contain">
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-8 font-medium text-xs uppercase tracking-widest">
+            <a href="#" class="hover:text-[#ba9008] transition">Home</a>
+            <a href="#sobre" class="hover:text-[#ba9008] transition">Sobre Nós</a>
+            <a href="#unieuro" class="hover:text-[#ba9008] transition">Unieuro</a>
+            <a href="#cursos-section" class="hover:text-[#ba9008] transition">Cursos</a>
+            <a href="#descontos" class="hover:text-[#ba9008] transition">Descontos</a>
+            
+            <button onclick="abrirFormulario('Vestibular Unieuro')" class="bg-white text-[#004181] px-8 py-3 rounded-full font-bold hover:scale-105 transition duration-300 shadow-md text-xs uppercase tracking-wider border border-white hover:bg-gray-100">
+                inscreva-se
+            </button>
+        </nav>
+
+        <button id="btn-mobile" onclick="toggleMenuMobile()" class="md:hidden text-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>              
+        </button>
+    </div>
+
+    <div id="menu-mobile-lista" class="hidden md:hidden absolute top-full left-0 w-full bg-[#004181] border-t border-blue-800 shadow-xl flex flex-col p-6 space-y-4 z-40 transition-all duration-300">
+        <a href="#" onclick="toggleMenuMobile()" class="block text-white font-bold hover:text-[#ba9008]">Home</a>
+        <a href="#sobre" onclick="toggleMenuMobile()" class="block text-white font-bold hover:text-[#ba9008]">Sobre Nós</a>
+        <a href="#unieuro" onclick="toggleMenuMobile()" class="block text-white font-bold hover:text-[#ba9008]">Unieuro</a>
+        <a href="#cursos-section" onclick="toggleMenuMobile()" class="block text-white font-bold hover:text-[#ba9008]">Cursos</a>
+        <a href="#descontos" onclick="toggleMenuMobile()" class="block text-white font-bold hover:text-[#ba9008]">Descontos</a>
+        <button onclick="abrirFormulario('Vestibular Unieuro'); toggleMenuMobile()" class="w-full bg-white text-[#004181] px-6 py-3 rounded-full font-bold hover:bg-gray-100 uppercase text-xs tracking-widest shadow-md">
+            inscreva-se
+        </button>
+    </div>
+</header>
+
+    <section class="hero-bg w-full h-auto min-h-[100vh] md:min-h-[90vh] flex flex-col items-center justify-center relative z-0 pb-10 pt-20 px-4">
+        
+    <div class="relative flex flex-col items-center justify-center text-center text-white w-full max-w-4xl mx-auto mb-10 md:mb-8">
+        
+        <img src="./assets/logo.webp" 
+             alt="Logo Unieuro" 
+             class="w-24 md:w-24 mb-6 drop-shadow-lg opacity-90 hover:opacity-100 transition">
+
+        <h1 class="text-4xl md:text-7xl font-bold tracking-widest mb-4 drop-shadow-lg">UNIEURO</h1>
+        <p class="text-lg md:text-xl font-light uppercase tracking-[0.2em] max-w-2xl drop-shadow-md mb-8">
+            Formação que conecta o hoje ao seu futuro profissional.
+        </p>
+
+        <button onclick="abrirFormulario('Vestibular Unieuro')" class="md:hidden bg-white text-[#004181] font-bold text-lg py-4 px-12 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:scale-105 transition duration-300 uppercase tracking-wider">
+        Inscreva-se Agora
+        </button>
+    </div>
+
+    <div class="w-full max-w-6xl mx-auto z-20 relative"> 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-black/90 backdrop-blur-md p-8 rounded text-white border-l-4 border-blue-600 shadow-2xl">
+                <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
+                    Infraestrutura <span class="text-blue-500">→</span>
+                </h3>
+                <p class="text-[13px] text-gray-400 leading-relaxed">Laboratórios equipados e recursos digitais que elevam o aprendizado prático.</p>
+            </div>
+            <div class="bg-black/90 backdrop-blur-md p-8 rounded text-white border-l-4 border-blue-600 shadow-2xl">
+                <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
+                    Nossos Campus <span class="text-blue-500">→</span>
+                </h3>
+                <p class="text-[13px] text-gray-400 leading-relaxed">Ambientes interativos conectados às reais demandas profissionais.</p>
+            </div>
+            <div class="bg-black/90 backdrop-blur-md p-8 rounded text-white border-l-4 border-blue-600 shadow-2xl">
+                <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
+                    Programas <span class="text-blue-500">→</span>
+                </h3>
+                <p class="text-[13px] text-gray-400 leading-relaxed">Conexões estratégicas que ampliam as oportunidades de estágio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre" class="hidden md:block bg-[#004181] py-24 px-4 relative z-20 border-t border-[#003366]">
+    
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+        <svg class="absolute -left-20 top-20 text-white w-96 h-96" fill="currentColor" viewBox="0 0 200 200"><path d="M45,-76C58,-69,68,-57,76,-44C84,-31,90,-17,89,-3C88,11,80,25,70,37C60,49,48,59,35,66C22,73,8,77,-5,76C-18,75,-30,69,-41,61C-52,53,-62,43,-69,31C-76,19,-80,5,-78,-8C-76,-21,-68,-33,-58,-43C-48,-53,-36,-61,-24,-68C-12,-75,2,-79,16,-78L16,-78Z" transform="translate(100 100)" /></svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative">
+        
+        <div class="text-white space-y-6 z-10 pl-8">
+            
+            <div class="flex items-center gap-3">
+                <span class="h-[1px] w-8 bg-[#ba9008]"></span>
+                <span class="text-[#ba9008] font-bold tracking-[0.2em] uppercase text-xs">Desde 1998</span>
+            </div>
+
+            <h2 class="text-4xl md:text-6xl font-serif text-white leading-tight">
+                Unieuro <br>
+                <span class="italic text-blue-200 font-light text-3xl md:text-5xl">Centro de Excelência</span>
+            </h2>
+            
+            <div class="h-1.5 w-24 bg-[#ec1c24] rounded-full"></div>
+
+            <p class="text-gray-300 text-base leading-relaxed max-w-md text-justify font-light">
+                Com uma trajetória marcada pela inovação e compromisso com a qualidade, o Centro Universitário Euro-Americano se consolida como referência no ensino superior. Nossa infraestrutura de ponta e corpo docente de excelência preparam você para liderar o mercado.
+            </p>
+
+        </div>
+
+       <div class="hidden md:block absolute right-0 top-[-120px] bottom-[-140px] w-[420px] z-30 group">
+    
+        <img src="./assets/menina.webp" 
+            alt="Estudante Unieuro" 
+            class="w-full h-full object-cover rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-l-4 border-[#ba9008] brightness-100 contrast-105">
+        </div>
+    </div>
+</section>
+
+<section id="unieuro" class="bg-white py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                
+                <div class="w-full md:w-1/2 relative group">
+                    <div class="absolute -inset-4 bg-blue-100 rounded-xl transform rotate-2 group-hover:rotate-1 transition duration-500"></div>
+                    
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white">
+                        <iframe 
+                            class="w-full aspect-video" 
+                            src="https://www.youtube.com/embed/4TCYL-TC_yo?si=abc123456&rel=0" 
+                            title="Vídeo Institucional Unieuro" 
+                            frameborder="0" 
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 space-y-8">
+                    
+                    <div>
+                        <span class="text-[#0535DA] font-bold text-sm uppercase tracking-widest mb-2 block">Por que escolher o Unieuro?</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                            Líder absoluto em qualidade de ensino há <span class="text-[#0535DA]">10 anos</span>.
+                        </h2>
+                        <p class="text-gray-600 mt-4 leading-relaxed">
+                            Com IGC 4 em todas as avaliações do MEC desde 2014, somos referência no Distrito Federal. Aqui, você encontra um ambiente inovador que favorece seu crescimento pessoal e profissional.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-[#0535DA]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Empregabilidade em Alta</h4>
+                                <p class="text-sm text-gray-600">Nossos alunos conquistam posições de destaque em todo o país.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-blue-50 p-3 rounded-lg text-[#0535DA]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Metodologia Ativa</h4>
+                                <p class="text-sm text-gray-600">Você é o protagonista. Desenvolva habilidades essenciais para o mercado.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="inline-block border-b-2 border-[#0535DA] text-[#0535DA] font-bold pb-1 hover:text-blue-800 transition">
+                        Conheça nossa estrutura completa →
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<section class="w-full py-20 px-4 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                O MELHOR FORMATO DE AULAS
+            </h2>
+            <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                Escolha o formato que melhor atende suas necessidades e rotina.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div onclick="irParaFiltro('Presencial')" class="cursor-pointer group bg-white p-8 rounded-lg border-l-4 border-blue-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                
+                <div class="mb-4 inline-block">
+                    <h3 class="text-2xl font-bold text-gray-900 relative z-10">
+                        PRESENCIAL
+                    </h3>
+                    <div class="h-1 w-10 bg-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed text-sm relative z-10">
+                    Este formato de curso destaca-se por aulas e atividades desenvolvidas majoritariamente presencial, nas instalações da instituição, com interação direta entre professores e estudantes. E englobando experiências laboratoriais, exposições teóricas dinâmicas, simulações de assistência e exames presenciais.
+                </p>
+            </div>
+
+            <div onclick="irParaFiltro('Semipresencial')" class="cursor-pointer group bg-white p-8 rounded-lg border-l-4 border-blue-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                
+                <div class="mb-4 inline-block">
+                    <h3 class="text-2xl font-bold text-gray-900 relative z-10">
+                        SEMIPRESENCIAL
+                    </h3>
+                    <div class="h-1 w-10 bg-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed text-sm relative z-10">
+                    Combina momentos presenciais e virtuais, unindo flexibilidade e convivência acadêmica. As sessões virtuais síncronas com o docente, favorecendo a troca direta, a análise de situações clínicas e a implementação de estratégias ativas. Flexível na forma, rigoroso na prática, inovador na essência.
+                </p>
+            </div>
+
+            <div onclick="irParaFiltro('EAD')" class="cursor-pointer group bg-white p-8 rounded-lg border-l-4 border-blue-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                
+                <div class="mb-4 inline-block">
+                    <h3 class="text-2xl font-bold text-gray-900 relative z-10">
+                        EAD
+                    </h3>
+                    <div class="h-1 w-10 bg-blue-600 group-hover:w-full transition-all duration-300 mt-2"></div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed text-sm relative z-10">
+                    Atividades realizadas predominantemente em ambiente virtual, com apoio tecnológico e mediação docente. Materiais didáticos atualizados, tarefas e percursos de conhecimento elaborados na Plataforma Digital (AVA), com liberdade e adaptabilidade, englobando vídeos educativos e aprendizagem orientada.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+<section id="cursos-section" class="w-full py-20 px-4 bg-[#f7f7f7] border-t border-gray-200">
+        <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-5xl font-bold text-[#004181] mb-4 tracking-tight">
+                NOSSOS <span class="text-[#ba9008]">CURSOS</span>
+            </h2>
+            <div class="h-1 w-24 bg-[#ec1c24] mx-auto rounded-full mb-6"></div>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+                Explore nossa grade curricular e encontre o caminho para o seu futuro.
+            </p>
+        </div>
+
+        <div class="bg-white border border-gray-300 p-6 rounded-2xl mb-12 shadow-lg">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                
+                <div class="relative">
+                    <input type="text" id="filtro-busca" placeholder="Buscar curso..." 
+                           class="w-full bg-[#f7f7f7] border border-gray-300 text-[#004181] rounded-lg px-4 py-3 focus:outline-none focus:border-[#004181] focus:ring-1 focus:ring-[#004181] transition placeholder-gray-500">
+                    <svg class="w-5 h-5 text-[#ba9008] absolute right-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+
+                <div class="relative">
+                    <select id="filtro-formato" class="w-full bg-[#f7f7f7] border border-gray-300 text-[#004181] rounded-lg px-4 py-3 focus:outline-none focus:border-[#004181] appearance-none cursor-pointer">
+                        <option value="">Todos os Formatos</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Semipresencial">Semipresencial</option>
+                        <option value="EAD">EAD</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#ba9008]">
+                        <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <select id="filtro-campus" class="w-full bg-[#f7f7f7] border border-gray-300 text-[#004181] rounded-lg px-4 py-3 focus:outline-none focus:border-[#004181] appearance-none cursor-pointer">
+                        <option value="">Todos os Campus</option>
+                        <option value="Asa Sul">Asa Sul</option>
+                        <option value="Águas Claras">Águas Claras</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#ba9008]">
+                        <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+
+                 <button onclick="limparFiltros()" class="w-full bg-gray-100 hover:bg-gray-200 text-[#004181] font-bold py-3 px-4 rounded-lg transition border border-gray-300">
+                    Limpar Filtros
+                </button>
+            </div>
+        </div>
+
+        <div id="grid-cursos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px] content-start">
+            </div>
+
+        <div id="controles-paginacao" class="flex justify-center items-center gap-4 mt-12">
+            <button onclick="mudarPagina(-1)" id="btn-prev" class="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#004181] border border-[#004181] hover:bg-[#004181] hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed font-bold shadow-md">
+                ← Anterior
+            </button>
+            
+            <span id="indicador-pagina" class="text-[#004181] font-bold text-lg">
+                Página 1
+            </span>
+
+            <button onclick="mudarPagina(1)" id="btn-next" class="flex items-center gap-2 px-6 py-3 rounded-full bg-[#004181] text-white border border-[#004181] hover:bg-[#003366] transition disabled:opacity-50 disabled:cursor-not-allowed font-bold shadow-md">
+                Próximo →
+            </button>
+        </div>
+
+        <div id="sem-resultados" class="hidden text-center py-20">
+            <p class="text-gray-500 text-xl">Nenhum curso encontrado com esses filtros.</p>
+            <button onclick="limparFiltros()" class="mt-4 text-[#ec1c24] hover:underline font-bold">Limpar busca</button>
+        </div>
+
+    </div>
+</section>
+
+<div id="modal-inscricao" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    
+    <div class="fixed inset-0 bg-black bg-opacity-75 transition-opacity backdrop-blur-sm" onclick="fecharFormulario()"></div>
+
+    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+        
+        <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border-t-4 border-[#ec1c24]">
+            
+            <button onclick="fecharFormulario()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <h3 class="text-2xl font-bold leading-6 text-[#004181]" id="modal-titulo">
+                        Inscreva-se Agora
+                    </h3>
+                    <div class="mt-2">
+                        <p class="text-sm text-gray-500 mb-6">
+                            Você está a um passo de garantir sua vaga no curso de <span id="modal-nome-curso" class="font-bold text-[#ba9008]"></span>.
+                        </p>
+                        
+    <form id="form-inscricao-modal" class="space-y-4 text-left">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nome Completo *</label>
+            <input type="text" id="nome-modal" placeholder="Seu nome" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">E-mail *</label>
+            <input type="email" id="email-modal" placeholder="seu@email.com" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp *</label>
+            <input type="tel" id="whatsapp-modal" placeholder="(61) 99999-9999" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CPF *</label>
+            <input type="text" id="cpf-modal" oninput="mascaraCPF(this)" maxlength="14" placeholder="000.000.000-00" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+    </div>
+
+    <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/60 space-y-4">
+    <div>
+        <h4 class="text-sm font-bold text-[#004181] uppercase tracking-wider">Endereço</h4>
+        <p class="text-xs text-gray-500 mt-1">Digite o CEP para preencher o endereço automaticamente.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CEP *</label>
+            <input type="text" id="cep-modal" oninput="mascaraCEP(this)" onblur="buscarCEP('modal')" maxlength="9" placeholder="00000-000" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+            <p id="cep-status-modal" class="hidden text-xs mt-1"></p>
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Estado *</label>
+            <input type="text" id="estado-modal" maxlength="2" placeholder="DF" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition uppercase">
+        </div>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Logradouro *</label>
+        <input type="text" id="logradouro-modal" placeholder="Rua, avenida, quadra..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Número *</label>
+            <input type="text" id="numero-modal" placeholder="Número" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Complemento</label>
+            <input type="text" id="complemento-modal" placeholder="Apartamento, bloco, lote..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Bairro/Região Administrativa *</label>
+            <input type="text" id="bairro-modal" placeholder="Asa Sul, Asa Norte, Taguatinga..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Cidade *</label>
+            <input type="text" id="cidade-modal" placeholder="Brasília" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+        </div>
+    </div>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Como deseja ingressar?</label>
+        <select id="ingresso-modal" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Vestibular">Vestibular Online</option>
+            <option value="Nota ENEM">Nota do ENEM</option>
+            <option value="Transferência">Transferência Externa</option>
+            <option value="Segunda Graduação">Portador de Diploma (2ª Graduação)</option>
+            <option value="PROUNI">PROUNI</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Campus de Preferência</label>
+        <select id="select-campus-modal" onchange="atualizarCursosModal()" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+            <option value="" disabled selected>Selecione o Campus</option>
+            <option value="Asa Sul">Asa Sul</option>
+            <option value="Águas Claras">Águas Claras</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Curso Desejado</label>
+        <select id="select-curso-modal" onchange="atualizarTurnosModal()" disabled class="w-full bg-gray-100 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer disabled:cursor-not-allowed">
+            <option value="" disabled selected>Selecione o Campus primeiro</option>
+        </select>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Turno</label>
+            <select id="select-turno-modal" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                <option value="Matutino">Matutino</option>
+                <option value="Noturno">Noturno</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Modalidade</label>
+            <select id="modalidade-modal" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                <option value="Presencial">Presencial</option>
+                <option value="Semipresencial">Semipresencial</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button" onclick="enviarInscricaoModal()" id="btn-enviar-modal" class="w-full text-white bg-[#ec1c24] hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-sm px-5 py-4 text-center transition duration-300 uppercase tracking-wider shadow-lg mt-4">
+        Concluir Inscrição
+    </button>
+</form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onclick="fecharFormulario()">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="descontos" class="w-full py-20 px-4 bg-white border-t border-gray-100 relative overflow-hidden">
+    <div class="absolute -right-20 top-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        
+        <div class="text-center mb-16">
+            <span class="text-[#ba9008] font-bold text-sm uppercase tracking-widest mb-2 block">Bolsas e Financiamentos</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#004181] mb-4 tracking-tight">
+                Seu esforço vale <span class="text-[#ec1c24]">desconto!</span>
+            </h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+                Facilitamos o seu acesso ao ensino superior de excelência. Confira nossas condições especiais de ingresso.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div class="bg-[#004181] p-6 text-center flex-shrink-0">
+                    <h3 class="text-2xl font-bold text-white mb-1">Nota do ENEM</h3>
+                    <p class="text-blue-200 text-sm">Use sua nota de edições anteriores e garanta sua bolsa.</p>
+                </div>
+                
+                <div class="p-8 flex flex-col flex-grow justify-between">
+                    <div class="overflow-x-auto flex-grow">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b-2 border-[#ba9008]">
+                                    <th class="py-4 text-[#004181] font-bold uppercase text-sm tracking-wider w-2/3">Pontuação no ENEM</th>
+                                    <th class="py-4 text-center text-[#004181] font-bold uppercase text-sm tracking-wider w-1/3">Desconto</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600">
+                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+                                    <td class="py-4 font-medium flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                        Até 649 pontos
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="inline-block bg-blue-50 text-[#004181] font-bold px-4 py-1.5 rounded-full text-lg">
+                                            Até 30%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="py-4 font-medium flex items-center gap-3">
+                                        <svg class="w-5 h-5 text-[#ba9008]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7"></path></svg>
+                                        Acima de 650 pontos
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="inline-block bg-[#ba9008]/10 text-[#ba9008] font-bold px-4 py-1.5 rounded-full text-lg">
+                                            Até 35%
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-8 text-center flex-shrink-0">
+                        <p class="text-xs text-gray-400 italic">* Descontos variam de acordo com o curso escolhido. Consulte o regulamento.</p>
+                        <button onclick="abrirFormulario('Nota ENEM')" class="mt-4 w-full bg-[#004181] hover:bg-[#003366] text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md">
+                            Quero usar minha nota
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 relative flex flex-col">
+                <div class="absolute top-4 right-4 bg-[#ec1c24] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10 shadow-sm">
+                    Mais Rápido
+                </div>
+
+                <div class="bg-gray-50 p-6 text-center border-b border-gray-200 flex-shrink-0">
+                    <h3 class="text-2xl font-bold text-[#004181] mb-1">Vestibular Online</h3>
+                    <p class="text-gray-500 text-sm">Faça a prova agora mesmo, sem sair de casa.</p>
+                </div>
+                
+                <div class="p-8 flex flex-col flex-grow justify-between">
+                    
+                    <div class="text-center py-6 flex-grow flex flex-col justify-center">
+                        <h4 class="text-lg font-medium text-gray-600 mb-2">Desconto garantido de</h4>
+                        <div class="text-5xl font-black text-[#ba9008] mb-2 drop-shadow-sm">
+                            Até 30%
+                        </div>
+                        <p class="text-sm text-gray-500 max-w-xs mx-auto">Em todo o curso para aprovados no nosso processo seletivo digital.</p>
+                    </div>
+
+                    <div class="mt-auto text-center flex-shrink-0">
+                        <p class="text-xs text-gray-400 italic mb-4">* Descontos variam de acordo com o curso escolhido. Consulte o regulamento.</p>
+                        <button onclick="abrirFormulario('Vestibular Online')" class="w-full bg-white border-2 border-[#004181] text-[#004181] hover:bg-[#004181] hover:text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-sm">
+                            Agendar Prova
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 bg-gray-50 rounded-xl p-6 border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+                <div class="bg-white p-3 rounded-full shadow-sm text-[#004181]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">Segunda Graduação ou Transferência?</h4>
+                    <p class="text-sm text-gray-500">Temos condições especiais para você que já está no ensino superior.</p>
+                </div>
+            </div>
+            <button onclick="abrirFormulario('Transferência/2ª Graduação')" class="text-[#004181] font-bold text-sm uppercase tracking-wider hover:underline whitespace-nowrap">
+                Consultar Condições →
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="inscricao" class="w-full py-20 px-4 bg-[#004181] border-t-4 border-[#ba9008]">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#004181] via-[#ba9008] to-[#ec1c24]"></div>
+
+                <h2 class="text-2xl md:text-3xl font-bold text-[#004181] mb-2">
+                    Comece sua jornada
+                </h2>
+                <p class="text-gray-500 mb-8 text-sm">Preencha seus dados para garantir condições exclusivas.</p>
+
+                <form id="form-inscricao" class="space-y-4">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nome Completo *</label>
+                            <input type="text" id="nome-footer" placeholder="Seu nome" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">E-mail *</label>
+                            <input type="email" id="email-footer" placeholder="seu@email.com" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp *</label>
+                            <input type="tel" id="whatsapp-footer" placeholder="(61) 99999-9999" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CPF *</label>
+                            <input type="text" id="cpf-footer" oninput="mascaraCPF(this)" maxlength="14" placeholder="000.000.000-00" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-4 bg-gray-50/60 space-y-4">
+                        <div>
+                            <h4 class="text-sm font-bold text-[#004181] uppercase tracking-wider">Endereço</h4>
+                            <p class="text-xs text-gray-500 mt-1">Digite o CEP para preencher o endereço automaticamente.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CEP *</label>
+                                <input type="text" id="cep-footer" oninput="mascaraCEP(this)" onblur="buscarCEP('footer')" maxlength="9" placeholder="00000-000" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                                <p id="cep-status-footer" class="hidden text-xs mt-1"></p>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Estado *</label>
+                                <input type="text" id="estado-footer" maxlength="2" placeholder="DF" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition uppercase">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Logradouro *</label>
+                            <input type="text" id="logradouro-footer" placeholder="Rua, avenida, quadra..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Número *</label>
+                                <input type="text" id="numero-footer" placeholder="Número" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Complemento</label>
+                                <input type="text" id="complemento-footer" placeholder="Apartamento, bloco, lote..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Bairro/Região Administrativa *</label>
+                                <input type="text" id="bairro-footer" placeholder="Asa Sul, Asa Norte, Taguatinga..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Cidade *</label>
+                                <input type="text" id="cidade-footer" placeholder="Brasília" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Como deseja ingressar?</label>
+                        <select id="ingresso-footer" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="Vestibular">Vestibular Online</option>
+                            <option value="Nota ENEM">Nota do ENEM</option>
+                            <option value="Transferência">Transferência Externa</option>
+                            <option value="Segunda Graduação">Portador de Diploma (2ª Graduação)</option>
+                            <option value="PROUNI">PROUNI</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Campus de Preferência</label>
+                        <select id="select-campus" onchange="atualizarCursos()" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                            <option value="" disabled selected>Selecione o Campus</option>
+                            <option value="Asa Sul">Asa Sul</option>
+                            <option value="Águas Claras">Águas Claras</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Curso Desejado</label>
+                        <select id="select-curso" onchange="atualizarTurnos()" disabled class="w-full bg-gray-100 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer disabled:cursor-not-allowed">
+                            <option value="" disabled selected>Selecione o Campus primeiro</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Turno</label>
+                            <select id="select-turno" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                                <option value="Matutino">Matutino</option>
+                                <option value="Noturno">Noturno</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Modalidade</label>
+                            <select id="modalidade-footer" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                                <option value="Presencial">Presencial</option>
+                                <option value="Semipresencial">Semipresencial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="enviarInscricao()" id="btn-enviar" class="w-full text-white bg-[#ec1c24] hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-sm px-5 py-4 text-center transition duration-300 uppercase tracking-wider shadow-lg mt-4">
+                        Concluir Inscrição
+                    </button>
+
+                </form>
+            </div> <div class="text-center lg:text-left space-y-8">
+                
+                <div class="space-y-4">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+                        Ficou com alguma <span class="text-[#ba9008]">dúvida?</span>
+                    </h2>
+                    <p class="text-blue-100 text-lg max-w-md mx-auto lg:mx-0">
+                        Não se preocupe! Nossa assistente virtual inteligente está pronta para te ajudar agora mesmo.
+                    </p>
+                </div>
+
+                <div class="bg-[#003366] rounded-2xl p-8 border border-[#004181] shadow-2xl relative">
+                    <div class="absolute -top-12 left-1/2 lg:left-auto lg:right-8 transform -translate-x-1/2 lg:translate-x-0 w-24 h-24 rounded-full border-4 border-[#ba9008] overflow-hidden shadow-lg bg-white">
+                        <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="mt-8 lg:mt-0">
+                        <h3 class="text-xl font-bold text-white mb-2">Fale com a Atena</h3>
+                        <p class="text-blue-200 text-sm mb-6 leading-relaxed">
+                            Ela pode tirar dúvidas sobre mensalidades, grade curricular e formas de ingresso em segundos.
+                        </p>
+                        
+                        <a href="https://wa.me/556134455891" target="_blank" class="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md group">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-26.6l-6.7-4.2-69.8 18.3 18.6-68.1-4.4-6.9c-18.7-29.4-28.6-63.1-28.6-97.5 0-101.9 82.9-184.8 184.8-184.8 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                            Falar com Atena no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div> </div>
+    </div>
+</section>
+
+
+<script>
+    // 1. DADOS DOS CURSOS (Mantive os mesmos textos ricos)
+    const cursosData = [
+      {
+        id: 1, // Adicionei ID para o sistema de "Ler Mais" funcionar
+        nome:"Direito", 
+        formato:"Presencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino e noturno", 
+        duracao:"5 anos", 
+        sobre:"O curso de Direito do Unieuro oferece formação teórica e prática desde os primeiros semestres, unindo disciplinas fundamentais e atividades nos Núcleos de Prática Jurídica. O aluno vivencia casos reais, audiências simuladas e projetos sociais, integrando teoria e experiência forense.", 
+        img:"./assets/curso direito.webp"
+      },
+      {
+        id: 2,
+        nome:"Biomedicina", 
+        formato:"Presencial,Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino", 
+        duracao:"4 anos", 
+        sobre:"Formação prática para atuar em análises clínicas, estética e diagnóstico laboratorial. Com Laboratório Escola, o aluno vivencia a rotina profissional desde o início.", 
+        img:"./assets/curso biomed.webp"
+      },
+      {
+        id: 3,
+        nome:"Enfermagem", 
+        formato:"Presencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino e noturno", 
+        duracao:"5 anos", 
+        sobre:"Profissionais éticos e preparados para todos os níveis de atenção à saúde. Forte atuação em simulações realísticas e estágios supervisionados.", 
+        img:"./assets/curso enfermagem.webp"
+      },
+      {
+        id: 4,
+        nome:"Fisioterapia", 
+        formato:"Presencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino e noturno", 
+        duracao:"5 anos", 
+        sobre:"Forma profissionais preparados para atuar na prevenção e reabilitação da saúde, com mais de 80% de empregabilidade e vivência em Clínica Escola.", 
+        img:"./assets/curso fisiote.webp"
+      },
+      {
+        id: 5,
+        nome:"Nutrição", 
+        formato:"Presencial,Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino", 
+        duracao:"4 anos", 
+        sobre:"Promoção de saúde e qualidade de vida. Com Laboratório de Técnica Dietética e Ambulatório-Escola, oferece forte integração entre teoria e prática.", 
+        img:"./assets/curso nutri.webp"
+      },
+      {
+        id: 6,
+        nome:"Odontologia", 
+        formato:"Presencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Integral", 
+        duracao:"5 anos", 
+        sobre:"Nota 4 no ENADE. Integra teoria e prática desde o início com laboratórios modernos, clínicas equipadas e tecnologias digitais.", 
+        img:"./assets/curso odonto.webp"
+      },
+      {
+        id: 7,
+        nome:"Psicologia", 
+        formato:"Presencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Noturno", 
+        duracao:"5 anos", 
+        sobre:"Base teórica sólida e práticas em contextos reais. Mais de mil horas de atividades supervisionadas na clínica escola e em testes psicológicos.", 
+        img:"./assets/curso psicologia.webp"
+      },
+      {
+        id: 8,
+        nome:"Bacharelado em IA", 
+        formato:"Presencial,Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Noturno", 
+        duracao:"4 anos", 
+        sobre:"Crie soluções em machine learning, automação e ciência de dados. Integrado a ADS e SI, destaca-se por laboratórios modernos e foco em big data.", 
+        img:"./assets/curso ia.webp"
+      },
+      {
+        id: 9,
+        nome:"Administração", 
+        formato:"Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Noturno", 
+        duracao:"4 anos", 
+        sobre:"Flexibilidade e foco no mercado. O aluno vivencia práticas de gestão e empreendedorismo, orientado por mestres e doutores.", 
+        img:"./assets/curso adm.webp"
+      },
+      {
+        id: 10,
+        nome:"Ciências Contábeis", 
+        formato:"Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Noturno", 
+        duracao:"4 anos", 
+        sobre:"Integra tecnologia, prática e flexibilidade. Utiliza laboratórios modernos, softwares contábeis e IA para formar profissionais preparados.", 
+        img:"./assets/curso cienc.webp"
+      },
+      {
+        id: 11,
+        nome:"Educação Física", 
+        formato:"Presencial,Semipresencial", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"Matutino e noturno", 
+        duracao:"4 anos", 
+        sobre:"Referência no Centro-Oeste. Une disciplinas biomédicas a práticas na Academia Escola e no parque esportivo.", 
+        img:"./assets/curso ed fis.webp"
+      },
+      {
+        id: 12,
+        nome:"Arquitetura e Urbanismo", 
+        formato:"Presencial", 
+        campus:"Águas Claras", 
+        turno:"Noturno", 
+        duracao:"5 anos", 
+        sobre:"Profissionais críticos e sensíveis aos espaços urbanos. Nota 4 no MEC. Integra teoria e prática em laboratórios como o FabLab.", 
+        img:"./assets/curso arqui.webp"
+      },
+      {
+        id: 13,
+        nome:"CST em ADS", 
+        formato:"Presencial", 
+        campus:"Águas Claras", 
+        turno:"Noturno", 
+        duracao:"2,5 anos", 
+        sobre:"Conceito 5 no MEC. Formação rápida com alta empregabilidade para criar e implementar soluções tecnológicas.", 
+        img:"./assets/curso ads.webp"
+      },
+      {
+        id: 14,
+        nome:"Sistemas de Informação", 
+        formato:"Presencial", 
+        campus:"Águas Claras", 
+        turno:"Noturno", 
+        duracao:"4 anos", 
+        sobre:"Integra tecnologia e gestão. Desenvolva raciocínio analítico e perfil empreendedor com foco em liderança e inovação.", 
+        img:"./assets/curso sis.webp"
+      },
+      {
+        id: 15,
+        nome:"Farmácia", 
+        formato:"Presencial,Semipresencial", 
+        campus:"Águas Claras", 
+        turno:"Matutino", 
+        duracao:"5 anos", 
+        sobre:"Atuação em áreas clínicas, laboratoriais e industriais. Laboratórios completos e empregabilidade acima de 85%.", 
+        img:"./assets/farmácia.webp" 
+      } 
+    ];
+
+    // ELEMENTOS DOM
+    const gridCursos = document.getElementById('grid-cursos');
+    const inputBusca = document.getElementById('filtro-busca');
+    const selectFormato = document.getElementById('filtro-formato');
+    const selectCampus = document.getElementById('filtro-campus');
+    const msgSemResultados = document.getElementById('sem-resultados');
+    
+    // Elementos de Paginação
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const indicadorPagina = document.getElementById('indicador-pagina');
+    const boxPaginacao = document.getElementById('controles-paginacao');
+
+    // Elementos do Modal
+    const modalInscricao = document.getElementById('modal-inscricao');
+    const modalNomeCurso = document.getElementById('modal-nome-curso');
+
+    // VARIAVEIS DE CONTROLE
+    let paginaAtual = 1;
+    const itensPorPagina = 6; 
+    let cursosFiltrados = [...cursosData];
+
+    // FUNÇÃO: Abrir Modal
+  // FUNÇÃO: Fechar Modal
+    function fecharFormulario() {
+        modalInscricao.classList.add('hidden');
+        document.body.style.overflow = 'auto'; 
+    }
+
+    // FUNÇÃO: Expandir Texto (Ler Mais)
+    function toggleTexto(id) {
+        const textoElement = document.getElementById(`desc-${id}`);
+        const btnElement = document.getElementById(`btn-ler-${id}`);
+        
+        // Verifica se está cortado (line-clamp-3)
+        if (textoElement.classList.contains('line-clamp-3')) {
+            textoElement.classList.remove('line-clamp-3'); // Remove o corte
+            btnElement.innerText = "Recolher ▴"; // Muda o texto do botão
+        } else {
+            textoElement.classList.add('line-clamp-3'); // Adiciona o corte de volta
+            btnElement.innerText = "Ler sobre o curso ▾";
+        }
+    }
+
+    // FUNÇÃO: Renderizar os cards (VISUAL CLEAN/BRANCO)
+    function renderizarCursos() {
+        gridCursos.innerHTML = '';
+        
+        if(cursosFiltrados.length === 0) {
+            msgSemResultados.classList.remove('hidden');
+            boxPaginacao.classList.add('hidden');
+            return;
+        } else {
+            msgSemResultados.classList.add('hidden');
+            boxPaginacao.classList.remove('hidden');
+        }
+
+        const totalPaginas = Math.ceil(cursosFiltrados.length / itensPorPagina);
+        const inicio = (paginaAtual - 1) * itensPorPagina;
+        const fim = inicio + itensPorPagina;
+        const cursosDaPagina = cursosFiltrados.slice(inicio, fim);
+
+        cursosDaPagina.forEach(curso => {
+            const imgSrc = curso.img; 
+
+            // Tratamento Tags (Visual Cinza Suave)
+            const listaFormatos = curso.formato.split(','); 
+            const tagsFormatoHTML = listaFormatos.map(f => `
+                <span class="text-[10px] uppercase font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded border border-gray-200">
+                    ${f.trim()}
+                </span>
+            `).join('');
+
+            const listaCampus = curso.campus.split(',');
+            const tagsCampusHTML = listaCampus.map(c => `
+                <span class="text-[10px] uppercase font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded border border-blue-100">
+                    ${c.trim()}
+                </span>
+            `).join('');
+
+            const card = `
+                <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                    
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="${imgSrc}" alt="${curso.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
+
+                        <div class="absolute top-3 right-3 bg-[#ba9008] text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">
+                            ${curso.duracao}
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-grow relative">
+                        
+                        <h3 class="text-xl font-bold text-[#004181] mb-3 leading-tight">${curso.nome}</h3>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${tagsFormatoHTML} 
+                            ${tagsCampusHTML}
+                        </div>
+
+                        <div class="mb-3 flex items-center gap-2 text-xs text-gray-400 border-b border-gray-100 pb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#ba9008]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span class="uppercase tracking-wide font-semibold">${curso.turno}</span>
+                        </div>
+                        
+                        <div class="flex-grow">
+                            <p id="desc-${curso.id}" class="text-gray-500 text-sm leading-relaxed line-clamp-3 transition-all duration-300">
+                                ${curso.sobre}
+                            </p>
+                            <button id="btn-ler-${curso.id}" onclick="toggleTexto(${curso.id})" class="text-[#004181] text-xs font-bold mt-2 hover:underline focus:outline-none flex items-center gap-1">
+                                Ler sobre o curso ▾
+                            </button>
+                        </div>
+
+                        <button onclick="abrirFormulario('${curso.nome}')" class="mt-6 w-full flex items-center justify-center gap-2 bg-[#ba9008] text-white font-bold py-3 rounded-lg hover:bg-[#ec1c24] transition duration-300 uppercase text-sm tracking-wider cursor-pointer shadow-md hover:shadow-lg border-none transform active:scale-95">
+                            Inscreva-se <span class="text-lg leading-none mb-0.5">→</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            gridCursos.innerHTML += card;
+        });
+
+        indicadorPagina.innerText = `Página ${paginaAtual} de ${totalPaginas}`;
+        btnPrev.disabled = paginaAtual === 1;
+        btnNext.disabled = paginaAtual === totalPaginas;
+
+        if(totalPaginas <= 1) {
+            boxPaginacao.classList.add('hidden');
+        }
+    }
+
+    function mudarPagina(direcao) {
+        paginaAtual += direcao;
+        renderizarCursos();
+        document.getElementById('cursos-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function filtrarCursos() {
+        const termo = inputBusca.value.toLowerCase();
+        const formato = selectFormato.value;
+        const campus = selectCampus.value;
+
+        cursosFiltrados = cursosData.filter(curso => {
+            const matchNome = curso.nome.toLowerCase().includes(termo);
+            const matchFormato = formato === "" || curso.formato.includes(formato);
+            const matchCampus = campus === "" || curso.campus.includes(campus);
+            return matchNome && matchFormato && matchCampus;
+        });
+
+        paginaAtual = 1;
+        renderizarCursos();
+    }
+
+    function limparFiltros() {
+        inputBusca.value = '';
+        selectFormato.value = '';
+        selectCampus.value = '';
+        cursosFiltrados = [...cursosData];
+        paginaAtual = 1;
+        renderizarCursos();
+    }
+
+    function irParaFiltro(tipo) {
+        const secaoCursos = document.getElementById('cursos-section');
+        secaoCursos.scrollIntoView({ behavior: 'smooth' });
+        selectFormato.value = tipo;
+        selectFormato.dispatchEvent(new Event('change'));
+    }
+
+    // Listeners
+    inputBusca.addEventListener('input', filtrarCursos);
+    selectFormato.addEventListener('change', filtrarCursos);
+    selectCampus.addEventListener('change', filtrarCursos);
+
+    // Inicializar
+    renderizarCursos();
+
+
+// --- LÓGICA DO FORMULÁRIO DE INSCRIÇÃO ---
+
+    const cursosAsaSul = [
+        "Direito", "Odontologia", "Psicologia", "Enfermagem", "Biomedicina", 
+        "Fisioterapia", "Nutrição", "Educação Física", "Administração", 
+        "Gestão de Recursos Humanos", "Inteligência Artificial", "Ciências Contábeis"
+    ];
+
+    const cursosAguasClaras = [
+        ...cursosAsaSul, 
+        "Análise e Desenvolvimento de Sistemas", "Sistemas de Informação", 
+        "Farmácia", "Arquitetura e Urbanismo"
+    ];
+
+    // --- FUNÇÃO DE MÁSCARA DO CPF (IMPORTANTE) ---
+    function mascaraCPF(i) {
+        var v = i.value;
+        if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+           i.value = v.substring(0, v.length-1);
+           return;
+        }
+        i.setAttribute("maxlength", "14");
+        v = v.replace(/\D/g, ""); // Remove tudo o que não é dígito
+        v = v.replace(/(\d{3})(\d)/, "$1.$2"); // Coloca um ponto entre o terceiro e o quarto dígitos
+        v = v.replace(/(\d{3})(\d)/, "$1.$2"); // Coloca um ponto entre o terceiro e o quarto dígitos de novo (para o segundo bloco de números)
+        v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Coloca um hífen entre o terceiro e o quarto dígitos
+        i.value = v;
+    }
+
+
+
+    // --- BUSCA AUTOMÁTICA DE ENDEREÇO PELO CEP (ViaCEP) ---
+function mascaraCEP(i) {
+    let v = i.value.replace(/\D/g, "").slice(0, 8);
+
+    if (v.length > 5) {
+        v = v.replace(/(\d{5})(\d)/, "$1-$2");
+    }
+
+    i.value = v;
+}
+
+function setCEPStatus(prefixo, mensagem, tipo = "info") {
+    const status = document.getElementById(`cep-status-${prefixo}`);
+
+    if (!status) return;
+
+    status.innerText = mensagem;
+    status.classList.remove("hidden", "text-gray-500", "text-green-600", "text-red-600");
+
+    if (tipo === "erro") {
+        status.classList.add("text-red-600");
+    } else if (tipo === "sucesso") {
+        status.classList.add("text-green-600");
+    } else {
+        status.classList.add("text-gray-500");
+    }
+}
+
+function preencherCampoEndereco(prefixo, campo, valor) {
+    const input = document.getElementById(`${campo}-${prefixo}`);
+
+    if (input && valor) {
+        input.value = valor;
+    }
+}
+
+function buscarCEP(prefixo) {
+    const cepInput = document.getElementById(`cep-${prefixo}`);
+
+    if (!cepInput) return;
+
+    const cep = cepInput.value.replace(/\D/g, "");
+
+    if (cep.length === 0) return;
+
+    if (cep.length !== 8) {
+        setCEPStatus(prefixo, "CEP inválido. Digite 8 números.", "erro");
+        return;
+    }
+
+    setCEPStatus(prefixo, "Buscando endereço...", "info");
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                setCEPStatus(prefixo, "CEP não encontrado. Preencha o endereço manualmente.", "erro");
+                return;
+            }
+
+            preencherCampoEndereco(prefixo, "logradouro", data.logradouro);
+            preencherCampoEndereco(prefixo, "complemento", data.complemento);
+            preencherCampoEndereco(prefixo, "bairro", data.bairro);
+            preencherCampoEndereco(prefixo, "cidade", data.localidade);
+            preencherCampoEndereco(prefixo, "estado", data.uf);
+
+            setCEPStatus(prefixo, "Endereço preenchido automaticamente.", "sucesso");
+        })
+        .catch(error => {
+            console.error(error);
+            setCEPStatus(prefixo, "Não foi possível buscar o CEP. Preencha manualmente.", "erro");
+        });
+}
+
+function coletarEndereco(prefixo) {
+    return {
+        cep: document.getElementById(`cep-${prefixo}`)?.value || "",
+        logradouro: document.getElementById(`logradouro-${prefixo}`)?.value || "",
+        numero: document.getElementById(`numero-${prefixo}`)?.value || "",
+        complemento: document.getElementById(`complemento-${prefixo}`)?.value || "",
+        bairro_regiao_administrativa: document.getElementById(`bairro-${prefixo}`)?.value || "",
+        cidade: document.getElementById(`cidade-${prefixo}`)?.value || "",
+        estado: document.getElementById(`estado-${prefixo}`)?.value || ""
+    };
+}
+
+function enderecoObrigatorioPreenchido(prefixo) {
+    const endereco = coletarEndereco(prefixo);
+
+    return endereco.cep !== "" &&
+           endereco.logradouro !== "" &&
+           endereco.numero !== "" &&
+           endereco.bairro_regiao_administrativa !== "" &&
+           endereco.cidade !== "" &&
+           endereco.estado !== "";
+}
+// --- CAMPOS CONDICIONAIS: NOTA ENEM + CONTRATANTE MENOR DE IDADE ---
+
+function formatarEnderecoTexto(endereco) {
+    if (!endereco) return "";
+
+    return `${endereco.logradouro}, ${endereco.numero}${endereco.complemento ? " - " + endereco.complemento : ""}, ${endereco.bairro_regiao_administrativa}, ${endereco.cidade}/${endereco.estado}, CEP: ${endereco.cep}`;
+}
+
+function calcularIdade(dataNascimento) {
+    if (!dataNascimento) return null;
+
+    const nascimento = new Date(dataNascimento + "T00:00:00");
+    const hoje = new Date();
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const mes = hoje.getMonth() - nascimento.getMonth();
+
+    if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+    }
+
+    return idade;
+}
+
+function parseNota(valor) {
+    if (!valor) return null;
+
+    const numero = Number(String(valor).replace(",", "."));
+
+    if (Number.isNaN(numero)) return null;
+
+    return numero;
+}
+
+function calcularMediaEnem(prefixo) {
+    const natureza = parseNota(document.getElementById(`nota-natureza-${prefixo}`)?.value);
+    const humanas = parseNota(document.getElementById(`nota-humanas-${prefixo}`)?.value);
+    const matematica = parseNota(document.getElementById(`nota-matematica-${prefixo}`)?.value);
+    const linguagem = parseNota(document.getElementById(`nota-linguagem-${prefixo}`)?.value);
+    const redacao = parseNota(document.getElementById(`nota-redacao-${prefixo}`)?.value);
+
+    const campoMedia = document.getElementById(`media-nota-enem-${prefixo}`);
+    const boxAtendimento = document.getElementById(`box-atendimento-enem-${prefixo}`);
+
+    if (!campoMedia) return;
+
+    if ([natureza, humanas, matematica, linguagem, redacao].some(nota => nota === null)) {
+        campoMedia.value = "";
+
+        if (boxAtendimento) {
+            boxAtendimento.classList.add("hidden");
+        }
+
+        return;
+    }
+
+    const media = (natureza + humanas + matematica + linguagem + redacao) / 5;
+    campoMedia.value = media.toFixed(2).replace(".", ",");
+
+    if (boxAtendimento) {
+        if (media < 300) {
+            boxAtendimento.classList.remove("hidden");
+        } else {
+            boxAtendimento.classList.add("hidden");
+        }
+    }
+}
+
+function toggleCamposContratante(prefixo) {
+    const dataNascimento = document.getElementById(`data-nascimento-${prefixo}`)?.value;
+    const idade = calcularIdade(dataNascimento);
+    const boxContratante = document.getElementById(`box-contratante-${prefixo}`);
+
+    if (!boxContratante) return;
+
+    if (idade !== null && idade < 18) {
+        boxContratante.classList.remove("hidden");
+    } else {
+        boxContratante.classList.add("hidden");
+    }
+}
+
+function toggleCamposEnem(prefixo) {
+    const ingresso = document.getElementById(`ingresso-${prefixo}`)?.value;
+    const boxEnem = document.getElementById(`box-enem-${prefixo}`);
+
+    if (!boxEnem) return;
+
+    if (ingresso === "Nota ENEM") {
+        boxEnem.classList.remove("hidden");
+    } else {
+        boxEnem.classList.add("hidden");
+    }
+}
+
+function htmlCamposEnem(prefixo) {
+    return `
+        <div id="box-enem-${prefixo}" class="hidden border border-gray-200 rounded-xl p-4 bg-blue-50/40 space-y-4">
+            <div>
+                <h4 class="text-sm font-bold text-[#004181] uppercase tracking-wider">Dados para ingresso via Nota do ENEM</h4>
+                <p class="text-xs text-gray-500 mt-1">Preencha os dados abaixo para análise da sua nota.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Data de Nascimento *</label>
+                    <input type="date" id="data-nascimento-${prefixo}" onchange="toggleCamposContratante('${prefixo}')" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">País *</label>
+                    <input type="text" id="pais-${prefixo}" placeholder="Brasil" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Cidade Natal *</label>
+                    <input type="text" id="cidade-natal-${prefixo}" placeholder="Cidade onde nasceu" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Estado Natal *</label>
+                    <input type="text" id="estado-natal-${prefixo}" placeholder="UF ou estado" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Número de inscrição *</label>
+                    <input type="text" id="num-enem-${prefixo}" placeholder="Número de inscrição do ENEM" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Ano de realização do ENEM *</label>
+                    <input type="number" id="ano-enem-${prefixo}" min="1998" max="2026" placeholder="Ex: 2024" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nota de Ciências da Natureza *</label>
+                    <input type="text" id="nota-natureza-${prefixo}" oninput="calcularMediaEnem('${prefixo}')" placeholder="Ex: 650,50" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nota de Ciências Humanas *</label>
+                    <input type="text" id="nota-humanas-${prefixo}" oninput="calcularMediaEnem('${prefixo}')" placeholder="Ex: 700,20" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nota de Matemática *</label>
+                    <input type="text" id="nota-matematica-${prefixo}" oninput="calcularMediaEnem('${prefixo}')" placeholder="Ex: 720,00" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nota de Linguagem *</label>
+                    <input type="text" id="nota-linguagem-${prefixo}" oninput="calcularMediaEnem('${prefixo}')" placeholder="Ex: 680,40" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nota da Redação *</label>
+                    <input type="text" id="nota-redacao-${prefixo}" oninput="calcularMediaEnem('${prefixo}')" placeholder="Ex: 900,00" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Média das Notas</label>
+                    <input type="text" id="media-nota-enem-${prefixo}" readonly placeholder="Calculada automaticamente" class="w-full bg-gray-100 border border-gray-300 text-gray-700 text-sm rounded-lg block p-3 outline-none transition cursor-not-allowed">
+                </div>
+            </div>
+
+            <div id="box-atendimento-enem-${prefixo}" class="hidden border border-yellow-300 rounded-xl p-4 bg-yellow-50 space-y-3">
+                <div>
+                    <h4 class="text-sm font-bold text-yellow-800 uppercase tracking-wider">
+                        Precisamos te ajudar com sua inscrição
+                    </h4>
+                    <p class="text-xs text-yellow-800 mt-1">
+                        Pela simulação com sua nota do ENEM, identificamos que você pode ter uma oportunidade melhor realizando o Vestibular Online. Nossa equipe pode te orientar agora para encontrar a forma de ingresso mais vantajosa para você.
+                    </p>
+                </div>
+
+                <a href="https://wa.me/556134455891?text=Estou%20tentando%20me%20inscrever%20usando%20minha%20nota%20ENEM%2C%20pode%20me%20ajudar%3F" 
+                target="_blank"
+                class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-4 rounded-lg transition duration-300 shadow-md text-sm text-center">
+                    Chamar atendimento humano no WhatsApp
+                </a>
+            </div>
+
+            <div id="box-contratante-${prefixo}" class="hidden border border-red-200 rounded-xl p-4 bg-red-50/70 space-y-4">
+                <div>
+                    <h4 class="text-sm font-bold text-[#ec1c24] uppercase tracking-wider">Dados do Contratante</h4>
+                    <p class="text-xs text-gray-500 mt-1">Como o candidato é menor de idade, informe os dados do responsável contratante.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nome do Contratante *</label>
+                        <input type="text" id="nome-contratante-${prefixo}" placeholder="Nome completo do contratante" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CPF do Contratante *</label>
+                        <input type="text" id="cpf-contratante-${prefixo}" oninput="mascaraCPF(this)" maxlength="14" placeholder="000.000.000-00" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Data de Nascimento do Contratante *</label>
+                    <input type="date" id="data-nasc-contratante-${prefixo}" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                    <p class="text-xs text-gray-500 mt-1">O contratante precisa ser maior de idade.</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-4 bg-white space-y-4">
+                    <h5 class="text-xs font-bold text-[#004181] uppercase tracking-wider">Endereço do Contratante</h5>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CEP *</label>
+                            <input type="text" id="cep-contratante-${prefixo}" oninput="mascaraCEP(this)" onblur="buscarCEP('contratante-${prefixo}')" maxlength="9" placeholder="00000-000" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                            <p id="cep-status-contratante-${prefixo}" class="hidden text-xs mt-1"></p>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Estado *</label>
+                            <input type="text" id="estado-contratante-${prefixo}" maxlength="2" placeholder="DF" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition uppercase">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Logradouro *</label>
+                        <input type="text" id="logradouro-contratante-${prefixo}" placeholder="Rua, avenida, quadra..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Número *</label>
+                            <input type="text" id="numero-contratante-${prefixo}" placeholder="Número" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Complemento</label>
+                            <input type="text" id="complemento-contratante-${prefixo}" placeholder="Apartamento, bloco, lote..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Bairro/Região Administrativa *</label>
+                            <input type="text" id="bairro-contratante-${prefixo}" placeholder="Asa Sul, Asa Norte..." class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Cidade *</label>
+                            <input type="text" id="cidade-contratante-${prefixo}" placeholder="Brasília" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+function inicializarCamposEnem() {
+    const configs = [
+        {
+            prefixo: "modal",
+            select: document.getElementById("ingresso-modal")
+        },
+        {
+            prefixo: "footer",
+            select: document.getElementById("ingresso-footer")
+        }
+    ];
+
+    configs.forEach(config => {
+        if (!config.select) return;
+
+        if (!document.getElementById(`box-enem-${config.prefixo}`)) {
+            config.select.closest("div").insertAdjacentHTML("afterend", htmlCamposEnem(config.prefixo));
+        }
+
+        config.select.addEventListener("change", () => toggleCamposEnem(config.prefixo));
+    });
+}
+
+function coletarDadosEnem(prefixo) {
+    const ingresso = document.getElementById(`ingresso-${prefixo}`)?.value;
+
+    if (ingresso !== "Nota ENEM") {
+        return {};
+    }
+
+    const enderecoContratanteObj = coletarEndereco(`contratante-${prefixo}`);
+
+    return {
+        data_nascimento: document.getElementById(`data-nascimento-${prefixo}`)?.value || "",
+        pais: document.getElementById(`pais-${prefixo}`)?.value || "",
+        cidade_natal: document.getElementById(`cidade-natal-${prefixo}`)?.value || "",
+        estado_natal: document.getElementById(`estado-natal-${prefixo}`)?.value || "",
+
+        num_enem: document.getElementById(`num-enem-${prefixo}`)?.value || "",
+        ano_enem: document.getElementById(`ano-enem-${prefixo}`)?.value || "",
+        nota_natureza: parseNota(document.getElementById(`nota-natureza-${prefixo}`)?.value),
+        nota_humanas: parseNota(document.getElementById(`nota-humanas-${prefixo}`)?.value),
+        nota_matematica: parseNota(document.getElementById(`nota-matematica-${prefixo}`)?.value),
+        nota_linguagem: parseNota(document.getElementById(`nota-linguagem-${prefixo}`)?.value),
+        nota_redacao: parseNota(document.getElementById(`nota-redacao-${prefixo}`)?.value),
+        media_nota_enem: parseNota(document.getElementById(`media-nota-enem-${prefixo}`)?.value),
+
+        nome_contratante: document.getElementById(`nome-contratante-${prefixo}`)?.value || "",
+        cpf_contratante: document.getElementById(`cpf-contratante-${prefixo}`)?.value || "",
+        data_nasc_contratante: document.getElementById(`data-nasc-contratante-${prefixo}`)?.value || "",
+        endereco_contratante: formatarEnderecoTexto(enderecoContratanteObj)
+    };
+}
+
+function validarCamposEnem(prefixo) {
+    const ingresso = document.getElementById(`ingresso-${prefixo}`)?.value;
+
+    if (ingresso !== "Nota ENEM") {
+        return true;
+    }
+
+    const dados = coletarDadosEnem(prefixo);
+
+    if (
+        dados.data_nascimento === "" ||
+        dados.pais === "" ||
+        dados.cidade_natal === "" ||
+        dados.estado_natal === "" ||
+        dados.num_enem === "" ||
+        dados.ano_enem === "" ||
+        dados.nota_natureza === null ||
+        dados.nota_humanas === null ||
+        dados.nota_matematica === null ||
+        dados.nota_linguagem === null ||
+        dados.nota_redacao === null ||
+        dados.media_nota_enem === null
+    ) {
+        alert("Por favor, preencha todos os campos obrigatórios da Nota do ENEM.");
+        return false;
+    }
+
+    const idadeAluno = calcularIdade(dados.data_nascimento);
+
+    if (idadeAluno !== null && idadeAluno < 18) {
+        const idadeContratante = calcularIdade(dados.data_nasc_contratante);
+
+        if (
+            dados.nome_contratante === "" ||
+            dados.cpf_contratante === "" ||
+            dados.data_nasc_contratante === "" ||
+            !enderecoObrigatorioPreenchido(`contratante-${prefixo}`)
+        ) {
+            alert("Como o candidato é menor de idade, preencha todos os dados do contratante.");
+            return false;
+        }
+
+        if (dados.cpf_contratante.length < 14) {
+            alert("CPF do contratante inválido. Verifique os números.");
+            return false;
+        }
+
+        if (idadeContratante === null || idadeContratante < 18) {
+            alert("O contratante precisa ser maior de idade.");
+            return false;
+        }
+    }
+
+    return true;
+}
+
+inicializarCamposEnem();
+
+    function atualizarCursos() {
+        const campus = document.getElementById("select-campus").value;
+        const selectCurso = document.getElementById("select-curso");
+        
+        selectCurso.innerHTML = '<option value="" disabled selected>Selecione o Curso</option>';
+        selectCurso.disabled = false;
+        selectCurso.classList.remove("bg-gray-100", "text-gray-500");
+        selectCurso.classList.add("bg-gray-50", "text-gray-900");
+
+        let lista = (campus === "Asa Sul") ? cursosAsaSul : cursosAguasClaras;
+        lista.sort();
+
+        lista.forEach(curso => {
+            const option = document.createElement("option");
+            option.value = curso;
+            option.text = curso;
+            selectCurso.appendChild(option);
+        });
+    }
+
+    function atualizarTurnos() {
+        const curso = document.getElementById("select-curso").value;
+        const selectTurno = document.getElementById("select-turno");
+        selectTurno.innerHTML = "";
+
+        if (curso === "Odontologia") {
+            selectTurno.add(new Option("Integral", "Integral"));
+            selectTurno.add(new Option("Noturno", "Noturno"));
+        } else {
+            selectTurno.add(new Option("Matutino", "Matutino"));
+            selectTurno.add(new Option("Noturno", "Noturno"));
+        }
+    }
+
+    function atualizarCursosModal() {
+        const campus = document.getElementById("select-campus-modal").value;
+        const selectCurso = document.getElementById("select-curso-modal");
+        selectCurso.innerHTML = '<option value="" disabled selected>Selecione o Curso</option>';
+        selectCurso.disabled = false;
+        selectCurso.classList.remove("bg-gray-100", "text-gray-500");
+        selectCurso.classList.add("bg-gray-50", "text-gray-900");
+
+        let lista = (campus === "Asa Sul") ? cursosAsaSul : cursosAguasClaras;
+        lista.sort();
+
+        lista.forEach(curso => {
+            const option = document.createElement("option");
+            option.value = curso;
+            option.text = curso;
+            selectCurso.appendChild(option);
+        });
+    }
+
+    function atualizarTurnosModal() {
+        const curso = document.getElementById("select-curso-modal").value;
+        const selectTurno = document.getElementById("select-turno-modal");
+        selectTurno.innerHTML = "";
+
+        if (curso === "Odontologia") {
+            selectTurno.add(new Option("Integral", "Integral"));
+            selectTurno.add(new Option("Noturno", "Noturno"));
+        } else {
+            selectTurno.add(new Option("Matutino", "Matutino"));
+            selectTurno.add(new Option("Noturno", "Noturno"));
+        }
+    }
+
+    function abrirFormulario(nomeCurso = "") {
+    const modal = document.getElementById('modal-inscricao');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    const tituloCurso = document.getElementById('modal-nome-curso');
+    if (tituloCurso) tituloCurso.innerText = nomeCurso;
+
+    const ingressoModal = document.getElementById("ingresso-modal");
+    const boxEnemModal = document.getElementById("box-enem-modal");
+
+    // Sempre reseta o ENEM ao abrir o modal, exceto quando o botão for "Nota ENEM"
+    if (ingressoModal && nomeCurso !== "Nota ENEM") {
+        ingressoModal.value = "";
+    }
+
+    if (boxEnemModal && nomeCurso !== "Nota ENEM") {
+        boxEnemModal.classList.add("hidden");
+    }
+
+    if (nomeCurso === "Nota ENEM") {
+        if (ingressoModal) {
+            ingressoModal.value = "Nota ENEM";
+            toggleCamposEnem("modal");
+        }
+        return;
+    }
+
+    if (
+        nomeCurso &&
+        nomeCurso !== "Vestibular Unieuro" &&
+        nomeCurso !== "Vestibular Online" &&
+        nomeCurso !== "Transferência/2ª Graduação"
+    ) {
+        let campusAuto = "Asa Sul";
+
+        if (!cursosAsaSul.includes(nomeCurso) && cursosAguasClaras.includes(nomeCurso)) {
+            campusAuto = "Águas Claras";
+        }
+
+        const selectCampus = document.getElementById("select-campus-modal");
+        selectCampus.value = campusAuto;
+        atualizarCursosModal();
+
+        const selectCurso = document.getElementById("select-curso-modal");
+        selectCurso.value = nomeCurso;
+        atualizarTurnosModal();
+    }
+}
+
+    // --- ENVIO RODAPÉ ---
+    function enviarInscricao() {
+    const nome = document.getElementById("nome-footer").value;
+    const email = document.getElementById("email-footer").value;
+    const whatsapp = document.getElementById("whatsapp-footer").value;
+    const cpf = document.getElementById("cpf-footer").value;
+    const ingresso = document.getElementById("ingresso-footer").value;
+    const campus = document.getElementById("select-campus").value;
+    const curso = document.getElementById("select-curso").value;
+    const turno = document.getElementById("select-turno").value;
+    const modalidade = document.getElementById("modalidade-footer").value;
+    const endereco = coletarEndereco("footer");
+    const dadosEnem = coletarDadosEnem("footer");
+
+    if(nome === "" || email === "" || whatsapp === "" || cpf === "" || campus === "" || curso === "" || !enderecoObrigatorioPreenchido("footer")) {
+        alert("Por favor, preencha todos os campos obrigatórios, incluindo o endereço.");
+        return;
+    }
+
+    if(cpf.length < 14) {
+        alert("CPF inválido. Verifique os números.");
+        return;
+    }
+
+    if(!validarCamposEnem("footer")) {
+        return;
+    }
+
+    const btn = document.getElementById("btn-enviar");
+    btn.innerText = "PROCESSANDO...";
+    btn.disabled = true;
+    btn.classList.add("opacity-50", "cursor-not-allowed");
+
+    const dadosLead = {
+        origem: "Rodapé",
+        nome: nome,
+        email: email,
+        cpf: cpf,
+        whatsapp: whatsapp,
+        ingresso: ingresso,
+        campus: campus,
+        curso: curso,
+        turno: turno,
+        modalidade: modalidade,
+        endereco: endereco,
+        ...dadosEnem,
+        data: new Date().toLocaleString()
+    };
+
+    const webhookURL = "https://n8n.oxygeni.com.br/webhook/api-site-agencia-euro"; 
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+    })
+    .then(response => {
+        const msgZap = `Olá! Me chamo *${nome}*. Fiz minha inscrição pelo site para *${curso}* (${campus}).`;
+        window.location.href = `https://wa.me/556134455891?text=${encodeURIComponent(msgZap)}`;
+    })
+    .catch(error => {
+        console.error(error);
+        const msgZap = `Olá! Me chamo *${nome}*. Tentei me inscrever para *${curso}*.`;
+        window.location.href = `https://wa.me/556134455891?text=${encodeURIComponent(msgZap)}`;
+    });
+}
+
+function enviarInscricaoModal() {
+    const nome = document.getElementById("nome-modal").value;
+    const email = document.getElementById("email-modal").value;
+    const whatsapp = document.getElementById("whatsapp-modal").value;
+    const cpf = document.getElementById("cpf-modal").value;
+    const ingresso = document.getElementById("ingresso-modal").value;
+    const campus = document.getElementById("select-campus-modal").value;
+    const curso = document.getElementById("select-curso-modal").value;
+    const turno = document.getElementById("select-turno-modal").value;
+    const modalidade = document.getElementById("modalidade-modal").value;
+    const endereco = coletarEndereco("modal");
+    const dadosEnem = coletarDadosEnem("modal");
+
+    if(nome === "" || email === "" || whatsapp === "" || cpf === "" || campus === "" || curso === "" || !enderecoObrigatorioPreenchido("modal")) {
+        alert("Por favor, preencha todos os campos obrigatórios, incluindo o endereço.");
+        return;
+    }
+
+    if(cpf.length < 14) {
+        alert("CPF inválido. Verifique os números.");
+        return;
+    }
+
+    if(!validarCamposEnem("modal")) {
+        return;
+    }
+
+    const btn = document.getElementById("btn-enviar-modal");
+    btn.innerText = "PROCESSANDO...";
+    btn.disabled = true;
+    btn.classList.add("opacity-50", "cursor-not-allowed");
+
+    const dadosLead = {
+        origem: "Pop-up",
+        nome: nome,
+        email: email,
+        cpf: cpf,
+        whatsapp: whatsapp,
+        ingresso: ingresso,
+        campus: campus,
+        curso: curso,
+        turno: turno,
+        modalidade: modalidade,
+        endereco: endereco,
+        ...dadosEnem,
+        data: new Date().toLocaleString()
+    };
+
+    const webhookURL = "https://n8n.oxygeni.com.br/webhook/api-site-agencia-euro"; 
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dadosLead)
+    })
+    .then(response => {
+        const msgZap = `Olá! Me chamo *${nome}*. Fiz minha inscrição pelo site para *${curso}* (${campus}).`;
+        window.location.href = `https://wa.me/556134455891?text=${encodeURIComponent(msgZap)}`;
+    })
+    .catch(error => {
+        console.error(error);
+        const msgZap = `Olá! Me chamo *${nome}*. Tentei me inscrever para *${curso}*.`;
+        window.location.href = `https://wa.me/556134455891?text=${encodeURIComponent(msgZap)}`;
+    });
+}
+    
+// --- FUNÇÃO PARA ABRIR/FECHAR MENU MOBILE ---
+    function toggleMenuMobile() {
+        const menu = document.getElementById('menu-mobile-lista');
+        
+        // Se tiver a classe 'hidden', remove (mostra). Se não tiver, adiciona (esconde).
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+        } else {
+            menu.classList.add('hidden');
+        }
+    }
+</script>
+
+<footer class="bg-white border-t border-[#ba9008] py-12 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
+        
+        <div class="flex flex-col items-center md:items-start w-full md:w-auto">
+            <img src="./assets/logo3.webp" alt="Logo Unieuro" class="w-20 h-auto mb-4 object-contain">
+            <p class="text-xs text-gray-400 font-light text-center md:text-left leading-relaxed">
+                © 2026 Centro Universitário Euro-Americano.<br>Todos os direitos reservados.
+            </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8 md:gap-16 w-full md:w-auto justify-center md:justify-start">
+            
+            <div class="text-center md:text-left">
+                <h3 class="text-[#004181] font-bold text-sm uppercase tracking-widest mb-3 flex items-center justify-center md:justify-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-[#ec1c24] rounded-full shrink-0"></span> 
+                    Águas Claras
+                </h3>
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    Av. Castanheiras, nº 3700<br>
+                    Águas Claras – DF
+                </p>
+            </div>
+
+            <div class="text-center md:text-left">
+                <h3 class="text-[#004181] font-bold text-sm uppercase tracking-widest mb-3 flex items-center justify-center md:justify-start gap-2">
+                    <span class="w-1.5 h-1.5 bg-[#ec1c24] rounded-full shrink-0"></span>
+                    Asa Sul
+                </h3>
+                <p class="text-gray-500 text-xs leading-relaxed">
+                    SCES Trecho 0, Conjunto 5<br>
+                    Av. das Nações Sul, S/N – DF
+                </p>
+            </div>
+
+        </div>
+
+        <div class="flex gap-3 justify-center w-full md:w-auto">
+            
+            <a href="https://wa.me/556134455891" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition duration-300 shadow-sm border border-gray-100 group">
+                <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-26.6l-6.7-4.2-69.8 18.3 18.6-68.1-4.4-6.9c-18.7-29.4-28.6-63.1-28.6-97.5 0-101.9 82.9-184.8 184.8-184.8 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com/unieuro_oficial/" class="w-9 h-9 rounded-full bg-gray-50 text-[#C13584] flex items-center justify-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:text-white transition duration-300 shadow-sm border border-gray-100 group">
+                <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+
+            <a href="https://www.youtube.com/@unieuro_oficial" class="w-9 h-9 rounded-full bg-gray-50 text-[#FF0000] flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition duration-300 shadow-sm border border-gray-100 group">
+                <svg class="w-4 h-4 fill-current group-hover:scale-110 transition" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
