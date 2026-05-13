@@ -2153,36 +2153,83 @@ function validarCamposEnem(prefixo) {
             body: JSON.stringify(dadosLead)
         })
         .then(response => {
-            if (typeof fbq === "function") {
-                fbq("track", "Lead", {
-                    content_name: "Vestibular Unieuro 2026",
-                    content_category: "Vestibular",
+            try {
+                if (typeof fbq === "function") {
+                    fbq("track", "Lead", {
+                        content_name: "Vestibular Unieuro 2026",
+                        content_category: "Vestibular",
+                        origem: origem,
+                        currency: "BRL"
+                    });
+                }
+            } catch (error) {
+                console.error("Erro no Meta Pixel:", error);
+            }
+
+            try {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: "lead_submit",
                     origem: origem,
+                    campanha: "Vestibular Unieuro 2026",
+                    value: 1,
                     currency: "BRL"
                 });
+            } catch (error) {
+                console.error("Erro no dataLayer/GTM:", error);
             }
 
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: "lead_submit",
-                origem: origem,
-                campanha: "Vestibular Unieuro 2026",
-                value: 1,
-                currency: "BRL"
-            });
-
-            if (typeof clarity === "function") {
-                clarity("event", "lead_submit");
-                clarity("set", "origem", origem);
-                clarity("set", "campanha", "Vestibular Unieuro 2026");
+            try {
+                if (typeof clarity === "function") {
+                    clarity("event", "lead_submit");
+                    clarity("set", "origem", origem);
+                    clarity("set", "campanha", "Vestibular Unieuro 2026");
+                }
+            } catch (error) {
+                console.error("Erro no Microsoft Clarity:", error);
             }
 
-            window.location.href = REDIRECT_INSCRICAO_2026;
+            setTimeout(() => {
+                window.location.href = REDIRECT_INSCRICAO_2026;
+            }, 500);
         })
+
         .catch(error => {
             console.error("Erro ao enviar lead:", error);
-            window.location.href = REDIRECT_INSCRICAO_2026;
+
+            try {
+                if (typeof fbq === "function") {
+                    fbq("track", "Lead", {
+                        content_name: "Vestibular Unieuro 2026",
+                        content_category: "Vestibular",
+                        origem: origem,
+                        currency: "BRL",
+                        status_envio: "erro_webhook"
+                    });
+                }
+            } catch (pixelError) {
+                console.error("Erro no Meta Pixel após falha do webhook:", pixelError);
+            }
+
+            try {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: "lead_submit",
+                    origem: origem,
+                    campanha: "Vestibular Unieuro 2026",
+                    status_envio: "erro_webhook",
+                    value: 1,
+                    currency: "BRL"
+                });
+            } catch (gtmError) {
+                console.error("Erro no dataLayer após falha do webhook:", gtmError);
+            }
+
+            setTimeout(() => {
+                window.location.href = REDIRECT_INSCRICAO_2026;
+            }, 500);
         })
+
         .finally(() => {
             if (btn) {
                 btn.innerText = textoOriginal;
