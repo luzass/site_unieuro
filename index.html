@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unieuro - Vestibular</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -85,16 +87,20 @@
     <link rel="shortcut icon" href="./assets/favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);
-            t.async=1;
-            t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];
-            y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "wqlh8jst6p");
+    <!-- Microsoft Clarity - carregamento adiado -->
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);
+                    t.async=1;
+                    t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];
+                    y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "wqlh8jst6p");
+            }, 2000);
+        });
     </script>
     <!-- End Microsoft Clarity -->
 
@@ -250,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
        <div class="hidden md:block absolute right-0 top-[-120px] bottom-[-140px] w-[420px] z-30 group">
     
-        <img src="./assets/menina.webp" 
+        <img src="./assets/menina.webp" loading="lazy" decoding="async"
             alt="Estudante Unieuro" 
             class="w-full h-full object-cover rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-l-4 border-[#ba9008] brightness-100 contrast-105">
         </div>
@@ -271,6 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             src="https://www.youtube.com/embed/4TCYL-TC_yo?si=abc123456&rel=0" 
                             title="Vídeo Institucional Unieuro" 
                             frameborder="0" 
+                            loading="lazy"
                             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowfullscreen>
                         </iframe>
@@ -966,7 +973,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <div class="bg-[#003366] rounded-2xl p-8 border border-[#004181] shadow-2xl relative">
                     <div class="absolute -top-12 left-1/2 lg:left-auto lg:right-8 transform -translate-x-1/2 lg:translate-x-0 w-24 h-24 rounded-full border-4 border-[#ba9008] overflow-hidden shadow-lg bg-white">
-                        <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover">
+                        <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover" loading="lazy" decoding="async">
                     </div>
 
                     <div class="mt-8 lg:mt-0">
@@ -1226,7 +1233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                     
                     <div class="relative h-48 overflow-hidden group">
-                        <img src="${imgSrc}" alt="${curso.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <img src="${imgSrc}" alt="${curso.nome}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
 
@@ -2470,7 +2477,7 @@ function enviarInscricaoModal() {
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
         
         <div class="flex flex-col items-center md:items-start w-full md:w-auto">
-            <img src="./assets/logo3.webp" alt="Logo Unieuro" class="w-20 h-auto mb-4 object-contain">
+            <img src="./assets/logo3.webp" alt="Logo Unieuro" class="w-20 h-auto mb-4 object-contain" loading="lazy" decoding="async">
             <p class="text-xs text-gray-400 font-light text-center md:text-left leading-relaxed">
                 © 2026 Centro Universitário Euro-Americano.<br>Todos os direitos reservados.
             </p>
