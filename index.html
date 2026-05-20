@@ -17,7 +17,7 @@
         background: linear-gradient(rgba(0, 24, 56, 0.28), rgba(0, 24, 56, 0.32)), 
                 url('./assets/background.webp');
         background-size: cover;
-        background-position: center;
+        background-position: center calc(34% + 50px);
         background-attachment: scroll;
     }
 
@@ -65,7 +65,49 @@
         box-shadow: 0 4px 14px rgba(186, 144, 8, 0.35);
     }
 
+    @media (min-width: 768px) {
+        .hero-logo-desktop {
+            display: none;
+        }
+
+        .hero-title-main {
+            display: block;
+            font-size: clamp(72px, 8vw, 118px);
+            letter-spacing: 0.08em;
+            transform: translateY(40px);
+            text-shadow:
+                0 4px 0 rgba(0, 0, 0, 0.52),
+                0 14px 32px rgba(0, 0, 0, 0.56),
+                0 0 26px rgba(0, 24, 56, 0.35);
+        }
+
+        .hero-title-highlight {
+            margin-bottom: 18px;
+        }
+
+        .hero-title-sub {
+            transform: translateY(30px);
+            text-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.92),
+                0 0 24px rgba(0, 0, 0, 0.78),
+                0 0 42px rgba(0, 0, 0, 0.62),
+                0 0 68px rgba(0, 0, 0, 0.46);
+        }
+
+        .hero-title-line {
+            transform: translateY(30px);
+            box-shadow:
+                0 4px 14px rgba(186, 144, 8, 0.45),
+                0 2px 12px rgba(0, 0, 0, 0.35);
+        }
+    }
+
     @media (max-width: 640px) {
+        .hero-bg {
+            background-position: 22% center;
+            background-size: auto 100%;
+        }
+
         .hero-title-highlight {
             padding: 14px 16px 16px;
             border-radius: 18px;
@@ -187,7 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             <img src="./assets/logo.webp" loading="eager" decoding="async" fetchpriority="high"
                 alt="Logo Unieuro" 
-                class="w-24 md:w-24 mb-6 drop-shadow-lg opacity-90 hover:opacity-100 transition">
+                class="hero-logo-desktop w-24 md:w-24 mb-6 drop-shadow-lg opacity-90 hover:opacity-100 transition">
 
             <div class="hero-title-highlight mb-8">
         <h1 class="hero-title-main">UNIEURO</h1>
