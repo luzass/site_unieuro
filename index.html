@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <style>
+    html { scroll-padding-top: 88px; }
     body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
     .hero-bg {
@@ -123,6 +124,140 @@
             letter-spacing: 0.12em;
         }
     }
+
+    @media (max-width: 767px) {
+        .site-header {
+            padding: 0.75rem 1rem;
+        }
+
+        .site-header-inner {
+            gap: 0.75rem;
+        }
+
+        #menu-mobile-lista {
+            max-height: calc(100svh - 72px);
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .hero-bg {
+            min-height: calc(100svh - 72px);
+            padding-top: 6rem !important;
+            padding-bottom: 2.5rem !important;
+            background-position: 24% center;
+            background-size: auto 100%;
+        }
+
+        .hero-title-highlight {
+            margin-bottom: 1.5rem !important;
+            padding: 0;
+        }
+
+        .hero-title-main {
+            font-size: clamp(38px, 13vw, 54px);
+            letter-spacing: 0.06em;
+            line-height: 0.98;
+        }
+
+        .hero-title-sub {
+            max-width: 94vw;
+            font-size: 13px;
+            line-height: 1.5;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-title-line {
+            width: 96px;
+            margin-top: 14px;
+        }
+
+        .hero-feature-grid {
+            gap: 1rem;
+        }
+
+        .hero-feature-card {
+            padding: 1.25rem;
+        }
+
+        #sobre {
+            display: block;
+        }
+
+        .sobre-copy {
+            padding-left: 0;
+        }
+
+        .sobre-copy p {
+            max-width: none;
+            text-align: left;
+        }
+
+        .sobre-figure {
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            margin: 0 auto;
+            top: auto;
+            right: auto;
+            bottom: auto;
+        }
+
+        .sobre-figure img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            border-radius: 0.75rem;
+        }
+
+        .section-gap-mobile {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .section-title-mobile {
+            margin-bottom: 3rem;
+        }
+
+        .filter-grid-mobile {
+            gap: 0.75rem;
+        }
+
+        #grid-cursos {
+            min-height: auto !important;
+            gap: 1.25rem;
+        }
+
+        .modal-panel {
+            width: calc(100vw - 1rem);
+            margin: 0.5rem auto;
+            max-height: calc(100svh - 1rem);
+            overflow-y: auto;
+            border-radius: 1rem;
+        }
+
+        .footer-form-mobile {
+            padding: 1.25rem;
+        }
+
+        .footer-help-mobile {
+            margin-top: 1rem;
+        }
+
+        .footer-help-card {
+            padding: 1.5rem;
+        }
+
+        .footer-help-copy {
+            padding-top: 2rem;
+        }
+
+        footer {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+    }
     </style>
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
@@ -184,8 +319,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header class="bg-[#004181] text-white py-4 px-8 sticky top-0 z-50 shadow-md">
-    <div class="flex justify-between items-center">
+<header class="site-header bg-[#004181] text-white py-4 px-8 sticky top-0 z-50 shadow-md">
+    <div class="site-header-inner flex justify-between items-center">
         <div class="flex items-center gap-2">
             <img src="./assets/logo2.webp"  loading="eager" decoding="async"
                  alt="Unieuro" 
@@ -247,20 +382,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="w-full max-w-6xl mx-auto z-20 relative"> 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
+        <div class="hero-feature-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="hero-feature-card bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
                 <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
                     Infraestrutura <span class="text-[#ba9008]">→</span>
                 </h3>
                 <p class="text-[13px] text-gray-700 leading-relaxed">Laboratórios equipados e recursos digitais que elevam o aprendizado prático.</p>
             </div>
-            <div class="bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
+            <div class="hero-feature-card bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
                 <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
                     Nossos Campi <span class="text-[#ba9008]">→</span>
                 </h3>
                 <p class="text-[13px] text-gray-700 leading-relaxed">Ambientes interativos conectados às reais demandas profissionais.</p>
             </div>
-            <div class="bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
+            <div class="hero-feature-card bg-white/85 backdrop-blur-md p-8 rounded text-[#004181] border-l-4 border-[#ba9008] shadow-2xl">
                 <h3 class="text-sm font-bold mb-3 uppercase flex items-center justify-between">
                     Programas <span class="text-[#ba9008]">→</span>
                 </h3>
@@ -270,15 +405,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<section id="sobre" class="hidden md:block bg-[#004181] py-24 px-4 relative z-20 border-t border-[#003366]">
+<section id="sobre" class="section-gap-mobile bg-[#004181] py-24 px-4 relative z-20 border-t border-[#003366]">
     
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
         <svg class="absolute -left-20 top-20 text-white w-96 h-96" fill="currentColor" viewBox="0 0 200 200"><path d="M45,-76C58,-69,68,-57,76,-44C84,-31,90,-17,89,-3C88,11,80,25,70,37C60,49,48,59,35,66C22,73,8,77,-5,76C-18,75,-30,69,-41,61C-52,53,-62,43,-69,31C-76,19,-80,5,-78,-8C-76,-21,-68,-33,-58,-43C-48,-53,-36,-61,-24,-68C-12,-75,2,-79,16,-78L16,-78Z" transform="translate(100 100)" /></svg>
     </div>
 
-    <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative">
+    <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center relative">
         
-        <div class="text-white space-y-6 z-10 pl-8">
+        <div class="sobre-copy text-white space-y-6 z-10 pl-8">
             
             <div class="flex items-center gap-3">
                 <span class="h-[1px] w-8 bg-[#ba9008]"></span>
@@ -298,7 +433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </div>
 
-       <div class="hidden md:block absolute right-0 top-[-120px] bottom-[-140px] w-[420px] z-30 group">
+       <div class="sobre-figure hidden md:block absolute right-0 top-[-120px] bottom-[-140px] w-[420px] z-30 group">
     
         <img src="./assets/menina.webp" loading="lazy" decoding="async"
             alt="Estudante Unieuro" 
@@ -307,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<section id="unieuro" class="bg-white py-24 px-4">
+<section id="unieuro" class="section-gap-mobile bg-white py-24 px-4">
         <div class="max-w-6xl mx-auto">
             
             <div class="flex flex-col md:flex-row gap-12 items-center">
@@ -333,7 +468,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div>
                         <span class="text-[#0535DA] font-bold text-sm uppercase tracking-widest mb-2 block">Por que escolher o Unieuro?</span>
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                            Líder absoluto em qualidade de ensino há mais<span class="text-[#0535DA]">10 anos</span>.
+                            Líder absoluto em qualidade de ensino há mais <span class="text-[#0535DA]">10 anos</span>.
                         </h2>
                         <p class="text-gray-600 mt-4 leading-relaxed">
                             Com IGC 4 em todas as avaliações do MEC desde 2014, somos referência no Distrito Federal. Aqui, você encontra um ambiente inovador que favorece seu crescimento pessoal e profissional.
@@ -374,10 +509,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-<section class="w-full py-20 px-4 bg-white border-t border-gray-100">
+<section class="section-gap-mobile w-full py-20 px-4 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto">
         
-        <div class="text-center mb-16">
+        <div class="section-title-mobile text-center mb-16">
             <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                 O MELHOR FORMATO DE AULAS
             </h2>
@@ -434,10 +569,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
     
-<section id="cursos-section" class="w-full py-20 px-4 bg-[#f7f7f7] border-t border-gray-200">
+<section id="cursos-section" class="section-gap-mobile w-full py-20 px-4 bg-[#f7f7f7] border-t border-gray-200">
         <div class="max-w-7xl mx-auto">
         
-        <div class="text-center mb-12">
+        <div class="section-title-mobile text-center mb-12">
             <h2 class="text-3xl md:text-5xl font-bold text-[#004181] mb-4 tracking-tight">
                 NOSSOS <span class="text-[#ba9008]">CURSOS</span>
             </h2>
@@ -448,7 +583,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="bg-white border border-gray-300 p-6 rounded-2xl mb-12 shadow-lg">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="filter-grid-mobile grid grid-cols-1 md:grid-cols-4 gap-4">
                 
                 <div class="relative">
                     <input type="text" id="filtro-busca" placeholder="Buscar curso..." 
@@ -516,7 +651,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
         
-        <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border-t-4 border-[#ec1c24]">
+        <div class="modal-panel relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border-t-4 border-[#ec1c24]">
             
             <button onclick="fecharFormulario()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -684,13 +819,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
-<section id="descontos" class="w-full py-20 px-4 bg-white border-t border-gray-100 relative overflow-hidden">
+<section id="descontos" class="section-gap-mobile w-full py-20 px-4 bg-white border-t border-gray-100 relative overflow-hidden">
     <div class="absolute -right-20 top-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
     <div class="absolute -left-20 bottom-0 w-80 h-80 bg-[#ba9008]/10 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
 
     <div class="max-w-6xl mx-auto relative z-10">
         
-        <div class="text-center mb-16">
+        <div class="section-title-mobile text-center mb-16">
             <span class="text-[#ba9008] font-bold text-sm uppercase tracking-widest mb-2 block">
                 Formas de ingresso
             </span>
@@ -853,12 +988,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<section id="inscricao" class="w-full py-20 px-4 bg-[#004181] border-t-4 border-[#ba9008]">
+<section id="inscricao" class="section-gap-mobile w-full py-20 px-4 bg-[#004181] border-t-4 border-[#ba9008]">
     <div class="max-w-7xl mx-auto">
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
+            <div class="footer-form-mobile bg-white rounded-2xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#004181] via-[#ba9008] to-[#ec1c24]"></div>
 
                 <h2 class="text-2xl md:text-3xl font-bold text-[#004181] mb-2">
@@ -1004,7 +1139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </button>
 
                 </form>
-            </div> <div class="text-center lg:text-left space-y-8">
+            </div> <div class="footer-help-mobile text-center lg:text-left space-y-8">
                 
                 <div class="space-y-4">
                     <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
@@ -1015,12 +1150,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </p>
                 </div>
 
-                <div class="bg-[#003366] rounded-2xl p-8 border border-[#004181] shadow-2xl relative">
+                <div class="footer-help-card bg-[#003366] rounded-2xl p-8 border border-[#004181] shadow-2xl relative">
                     <div class="absolute -top-12 left-1/2 lg:left-auto lg:right-8 transform -translate-x-1/2 lg:translate-x-0 w-24 h-24 rounded-full border-4 border-[#ba9008] overflow-hidden shadow-lg bg-white">
                         <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover" loading="lazy" decoding="async">
                     </div>
 
-                    <div class="mt-8 lg:mt-0">
+                    <div class="footer-help-copy mt-8 lg:mt-0">
                         <h3 class="text-xl font-bold text-white mb-2">Fale com a Atena</h3>
                         <p class="text-blue-200 text-sm mb-6 leading-relaxed">
                             Ela pode tirar dúvidas sobre mensalidades, grade curricular e formas de ingresso em segundos.
