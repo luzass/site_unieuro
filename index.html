@@ -795,10 +795,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Modalidade</label>
-            <select id="modalidade-modal" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
-                <option value="Presencial">Presencial</option>
-                <option value="Semipresencial">Semipresencial</option>
-            </select>
+                            <select id="modalidade-modal" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
+                                <option value="Presencial">Presencial</option>
+                                <option value="Semipresencial">Semipresencial</option>
+                                <option value="EAD">EAD</option>
+                            </select>
         </div>
     </div> -->
 
@@ -1130,6 +1131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <select id="modalidade-footer" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#004181] focus:border-[#004181] block p-3 outline-none transition cursor-pointer">
                                 <option value="Presencial">Presencial</option>
                                 <option value="Semipresencial">Semipresencial</option>
+                                <option value="EAD">EAD</option>
                             </select>
                         </div>
                     </div> -->
@@ -1259,12 +1261,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {
         id: 9,
         nome:"Administração", 
-        formato:"Semipresencial", 
+        formato:"Semipresencial,EAD", 
         campus:"Asa Sul, Águas Claras", 
         turno:"Noturno", 
         duracao:"4 anos", 
         sobre:"Flexibilidade e foco no mercado. O aluno vivencia práticas de gestão e empreendedorismo, orientado por mestres e doutores.", 
         img:"./assets/curso adm.webp"
+      },
+      {
+        id: 16,
+        nome:"CST em Recursos Humanos", 
+        formato:"EAD", 
+        campus:"Asa Sul, Águas Claras", 
+        turno:"EAD", 
+        duracao:"2 anos", 
+        sobre:"O CST em Recursos Humanos do Unieuro oferece formação prática e estratégica para atuar na gestão de pessoas, recrutamento e seleção, treinamento, desenvolvimento, clima organizacional e rotinas trabalhistas. O aluno desenvolve competências para lidar com os desafios do ambiente corporativo, unindo visão humanizada, análise de indicadores e práticas essenciais para o crescimento das organizações.", 
+        img:"./assets/rh.webp"
       },
       {
         id: 10,
@@ -1408,6 +1420,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </span>
             `).join('');
 
+            const turnoExibicao =
+                curso.nome === "Administração" && curso.formato.includes("EAD") && !curso.turno.includes("EAD")
+                    ? `${curso.turno} • EAD`
+                    : curso.turno;
+
             const card = `
                 <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                     
@@ -1432,7 +1449,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <div class="mb-3 flex items-center gap-2 text-xs text-gray-400 border-b border-gray-100 pb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#ba9008]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <span class="uppercase tracking-wide font-semibold">${curso.turno}</span>
+                            <span class="uppercase tracking-wide font-semibold">${turnoExibicao}</span>
                         </div>
                         
                         <div class="flex-grow">
@@ -1514,7 +1531,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const cursosAsaSul = [
         "Direito", "Odontologia", "Psicologia", "Enfermagem", "Biomedicina", 
         "Fisioterapia", "Nutrição", "Educação Física", "Administração", 
-        "Gestão de Recursos Humanos", "Inteligência Artificial", "Ciências Contábeis"
+        "CST em Recursos Humanos", "Inteligência Artificial", "Ciências Contábeis"
     ];
 
     const cursosAguasClaras = [
