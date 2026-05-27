@@ -660,12 +660,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <h3 class="text-2xl font-bold leading-6 text-[#004181]" id="modal-titulo">
-                        Inscreva-se Agora
+                        Faça seu pré-cadastro
                     </h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-500 mb-6">
-                            Você está a um passo de garantir sua vaga no curso de <span id="modal-nome-curso" class="font-bold text-[#ba9008]"></span>.
+                            Esta é a <span class="font-bold text-[#004181]">etapa 1 de 2</span>. Envie seus dados para continuar a inscrição do curso de <span id="modal-nome-curso" class="font-bold text-[#ba9008]"></span>.
                         </p>
+
+                        <div class="mb-6 rounded-xl border border-[#ba9008]/30 bg-[#ba9008]/10 p-4">
+                            <p class="text-sm font-semibold text-[#6b5600] leading-relaxed">
+                                Este envio <span class="font-bold">não conclui sua inscrição</span>. Depois do pré-cadastro, você seguirá para a próxima página para preencher o formulário completo.
+                            </p>
+                        </div>
                         
     <form id="form-inscricao-modal" class="space-y-4 text-left">
 
@@ -804,8 +810,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div> -->
 
     <button type="button" onclick="enviarInscricaoModal()" id="btn-enviar-modal" class="w-full text-white bg-[#ec1c24] hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-sm px-5 py-4 text-center transition duration-300 uppercase tracking-wider shadow-lg mt-4">
-        Concluir Inscrição
+        Continuar para inscrição completa
     </button>
+
+    <p class="text-xs text-center text-gray-500 leading-relaxed">
+        Você será direcionado para a próxima etapa para finalizar sua inscrição.
+    </p>
 </form>
                     </div>
                 </div>
@@ -998,9 +1008,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#004181] via-[#ba9008] to-[#ec1c24]"></div>
 
                 <h2 class="text-2xl md:text-3xl font-bold text-[#004181] mb-2">
-                    Comece sua jornada
+                    Faça seu pré-cadastro
                 </h2>
-                <p class="text-gray-500 mb-8 text-sm">Preencha seus dados para iniciar sua inscrição.</p>
+                <p class="text-gray-500 mb-4 text-sm">Etapa 1 de 2: preencha seus dados para seguir para a inscrição completa.</p>
+
+                <div class="mb-8 rounded-xl border border-[#ba9008]/30 bg-[#ba9008]/10 p-4">
+                    <p class="text-sm font-semibold text-[#6b5600] leading-relaxed">
+                        Este formulário é um <span class="font-bold">pré-cadastro</span>. Após enviar nome, WhatsApp e CPF, você será levado para a próxima página para concluir sua inscrição de fato.
+                    </p>
+                </div>
 
                 <form id="form-inscricao" class="space-y-4">
                     
@@ -1137,8 +1153,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div> -->
 
                     <button type="button" onclick="enviarInscricao()" id="btn-enviar" class="w-full text-white bg-[#ec1c24] hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-bold rounded-lg text-sm px-5 py-4 text-center transition duration-300 uppercase tracking-wider shadow-lg mt-4">
-                        Concluir Inscrição
+                        Continuar para inscrição completa
                     </button>
+
+                    <p class="text-xs text-center text-gray-500 leading-relaxed">
+                        Na próxima etapa, você preencherá o formulário completo para finalizar sua inscrição.
+                    </p>
 
                 </form>
             </div> <div class="footer-help-mobile text-center lg:text-left space-y-8">
