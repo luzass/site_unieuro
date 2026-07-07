@@ -4,22 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unieuro - Vestibular</title>
-    <link rel="preload" as="image" href="./assets/background.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="./assets/logo.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/background-mobile.webp" media="(max-width: 767px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/background-desktop.webp" media="(min-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/logo.webp" media="(max-width: 767px)" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <style>
     html { scroll-padding-top: 88px; }
     body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
     .hero-bg {
-        background: linear-gradient(rgba(0, 24, 56, 0.28), rgba(0, 24, 56, 0.32)), 
-                url('./assets/background.webp');
+        background-image: url('./assets/background-desktop.webp');
         background-size: cover;
         background-position: center calc(34% + 50px);
+        background-repeat: no-repeat;
         background-attachment: scroll;
+    }
+
+    .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0, 24, 56, 0.28), rgba(0, 24, 56, 0.32));
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @supports (content-visibility: auto) {
+        .deferred-section,
+        .deferred-footer {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 960px;
+        }
     }
 
     .hero-title-highlight {
@@ -67,6 +86,10 @@
     }
 
     @media (min-width: 768px) {
+        .site-header {
+            box-shadow: none;
+        }
+
         .hero-logo-desktop {
             display: none;
         }
@@ -144,6 +167,7 @@
             min-height: calc(100svh - 72px);
             padding-top: 6rem !important;
             padding-bottom: 2.5rem !important;
+            background-image: url('./assets/background-mobile.webp');
             background-position: 24% center;
             background-size: auto 100%;
         }
@@ -322,7 +346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="site-header bg-[#004181] text-white py-4 px-8 sticky top-0 z-50 shadow-md">
     <div class="site-header-inner flex justify-between items-center">
         <div class="flex items-center gap-2">
-            <img src="./assets/logo2.webp"  loading="eager" decoding="async"
+            <img src="./assets/logo2.webp"  loading="eager" decoding="async" width="474" height="100"
                  alt="Unieuro" 
                  class="h-10 w-auto object-contain">
         </div>
@@ -362,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
     <div class="relative flex flex-col items-center justify-center text-center text-white w-full max-w-4xl mx-auto mb-10 md:mb-8">
             
-            <img src="./assets/logo.webp" loading="eager" decoding="async" fetchpriority="high"
+            <img src="./assets/logo.webp" loading="eager" decoding="async" fetchpriority="high" width="480" height="480"
                 alt="Logo Unieuro" 
                 class="hero-logo-desktop w-24 md:w-24 mb-6 drop-shadow-lg opacity-90 hover:opacity-100 transition">
 
@@ -405,7 +429,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<section id="sobre" class="section-gap-mobile bg-[#004181] py-24 px-4 relative z-20 border-t border-[#003366]">
+<section id="sobre" class="section-gap-mobile deferred-section bg-[#004181] py-24 px-4 relative z-20 border-t border-[#003366]">
     
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
         <svg class="absolute -left-20 top-20 text-white w-96 h-96" fill="currentColor" viewBox="0 0 200 200"><path d="M45,-76C58,-69,68,-57,76,-44C84,-31,90,-17,89,-3C88,11,80,25,70,37C60,49,48,59,35,66C22,73,8,77,-5,76C-18,75,-30,69,-41,61C-52,53,-62,43,-69,31C-76,19,-80,5,-78,-8C-76,-21,-68,-33,-58,-43C-48,-53,-36,-61,-24,-68C-12,-75,2,-79,16,-78L16,-78Z" transform="translate(100 100)" /></svg>
@@ -435,14 +459,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
        <div class="sobre-figure hidden md:block absolute right-0 top-[-120px] bottom-[-140px] w-[420px] z-30 group">
     
-        <img src="./assets/menina.webp" loading="lazy" decoding="async"
+        <img src="./assets/menina.webp" loading="lazy" decoding="async" width="853" height="1280"
             alt="Estudante Unieuro" 
             class="w-full h-full object-cover rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-l-4 border-[#ba9008] brightness-100 contrast-105">
         </div>
     </div>
 </section>
 
-<section id="unieuro" class="section-gap-mobile bg-white py-24 px-4">
+<section id="unieuro" class="section-gap-mobile deferred-section bg-white py-24 px-4">
         <div class="max-w-6xl mx-auto">
             
             <div class="flex flex-col md:flex-row gap-12 items-center">
@@ -509,7 +533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-<section class="section-gap-mobile w-full py-20 px-4 bg-white border-t border-gray-100">
+<section class="section-gap-mobile deferred-section w-full py-20 px-4 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto">
         
         <div class="section-title-mobile text-center mb-16">
@@ -569,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
     
-<section id="cursos-section" class="section-gap-mobile w-full py-20 px-4 bg-[#f7f7f7] border-t border-gray-200">
+<section id="cursos-section" class="section-gap-mobile deferred-section w-full py-20 px-4 bg-[#f7f7f7] border-t border-gray-200">
         <div class="max-w-7xl mx-auto">
         
         <div class="section-title-mobile text-center mb-12">
@@ -830,7 +854,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
-<section id="descontos" class="section-gap-mobile w-full py-20 px-4 bg-white border-t border-gray-100 relative overflow-hidden">
+<section id="descontos" class="section-gap-mobile deferred-section w-full py-20 px-4 bg-white border-t border-gray-100 relative overflow-hidden">
     <div class="absolute -right-20 top-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
     <div class="absolute -left-20 bottom-0 w-80 h-80 bg-[#ba9008]/10 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
 
@@ -999,7 +1023,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<section id="inscricao" class="section-gap-mobile w-full py-20 px-4 bg-[#004181] border-t-4 border-[#ba9008]">
+<section id="inscricao" class="section-gap-mobile deferred-section w-full py-20 px-4 bg-[#004181] border-t-4 border-[#ba9008]">
     <div class="max-w-7xl mx-auto">
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -1174,7 +1198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <div class="footer-help-card bg-[#003366] rounded-2xl p-8 border border-[#004181] shadow-2xl relative">
                     <div class="absolute -top-12 left-1/2 lg:left-auto lg:right-8 transform -translate-x-1/2 lg:translate-x-0 w-24 h-24 rounded-full border-4 border-[#ba9008] overflow-hidden shadow-lg bg-white">
-                        <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                        <img src="./assets/robot-1.webp" alt="Atena Unieuro" class="w-full h-full object-cover" loading="lazy" decoding="async" width="265" height="265">
                     </div>
 
                     <div class="footer-help-copy mt-8 lg:mt-0">
@@ -1449,7 +1473,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                     
                     <div class="relative h-48 overflow-hidden group">
-                        <img src="${imgSrc}" alt="${curso.nome}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <img src="${imgSrc}" alt="${curso.nome}" loading="lazy" decoding="async" width="400" height="300" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
 
@@ -1537,13 +1561,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         selectFormato.dispatchEvent(new Event('change'));
     }
 
+    let cursosInicializados = false;
+
+    function inicializarCursosQuandoPossivel() {
+        if (cursosInicializados || !gridCursos) {
+            return;
+        }
+
+        cursosInicializados = true;
+        renderizarCursos();
+    }
+
+    function agendarEmIdle(callback) {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(callback, { timeout: 1800 });
+            return;
+        }
+
+        window.setTimeout(callback, 1);
+    }
+
+    function observarSecaoCursos() {
+        const secaoCursos = document.getElementById("cursos-section");
+
+        if (!secaoCursos || !("IntersectionObserver" in window)) {
+            agendarEmIdle(inicializarCursosQuandoPossivel);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                inicializarCursosQuandoPossivel();
+                observer.disconnect();
+            }
+        }, {
+            rootMargin: "240px 0px"
+        });
+
+        observer.observe(secaoCursos);
+    }
+
     // Listeners
     inputBusca.addEventListener('input', filtrarCursos);
     selectFormato.addEventListener('change', filtrarCursos);
     selectCampus.addEventListener('change', filtrarCursos);
 
     // Inicializar
-    renderizarCursos();
+    if (window.location.hash === "#cursos-section") {
+        inicializarCursosQuandoPossivel();
+    } else {
+        observarSecaoCursos();
+        agendarEmIdle(inicializarCursosQuandoPossivel);
+    }
 
 
 // --- LÓGICA DO FORMULÁRIO DE INSCRIÇÃO ---
@@ -2049,75 +2118,6 @@ function validarCamposEnem(prefixo) {
 
     return true;
 }
-
-/* inicializarCamposEnem();
-
-    function atualizarCursos() {
-        const campus = document.getElementById("select-campus").value;
-        const selectCurso = document.getElementById("select-curso");
-        
-        selectCurso.innerHTML = '<option value="" disabled selected>Selecione o Curso</option>';
-        selectCurso.disabled = false;
-        selectCurso.classList.remove("bg-gray-100", "text-gray-500");
-        selectCurso.classList.add("bg-gray-50", "text-gray-900");
-
-        let lista = (campus === "Asa Sul") ? cursosAsaSul : cursosAguasClaras;
-        lista.sort();
-
-        lista.forEach(curso => {
-            const option = document.createElement("option");
-            option.value = curso;
-            option.text = curso;
-            selectCurso.appendChild(option);
-        });
-    }
-
-    function atualizarTurnos() {
-        const curso = document.getElementById("select-curso").value;
-        const selectTurno = document.getElementById("select-turno");
-        selectTurno.innerHTML = "";
-
-        if (curso === "Odontologia") {
-            selectTurno.add(new Option("Integral", "Integral"));
-            selectTurno.add(new Option("Noturno", "Noturno"));
-        } else {
-            selectTurno.add(new Option("Matutino", "Matutino"));
-            selectTurno.add(new Option("Noturno", "Noturno"));
-        }
-    }
-
-    function atualizarCursosModal() {
-        const campus = document.getElementById("select-campus-modal").value;
-        const selectCurso = document.getElementById("select-curso-modal");
-        selectCurso.innerHTML = '<option value="" disabled selected>Selecione o Curso</option>';
-        selectCurso.disabled = false;
-        selectCurso.classList.remove("bg-gray-100", "text-gray-500");
-        selectCurso.classList.add("bg-gray-50", "text-gray-900");
-
-        let lista = (campus === "Asa Sul") ? cursosAsaSul : cursosAguasClaras;
-        lista.sort();
-
-        lista.forEach(curso => {
-            const option = document.createElement("option");
-            option.value = curso;
-            option.text = curso;
-            selectCurso.appendChild(option);
-        });
-    }
-
-    function atualizarTurnosModal() {
-        const curso = document.getElementById("select-curso-modal").value;
-        const selectTurno = document.getElementById("select-turno-modal");
-        selectTurno.innerHTML = "";
-
-        if (curso === "Odontologia") {
-            selectTurno.add(new Option("Integral", "Integral"));
-            selectTurno.add(new Option("Noturno", "Noturno"));
-        } else {
-            selectTurno.add(new Option("Matutino", "Matutino"));
-            selectTurno.add(new Option("Noturno", "Noturno"));
-        }
-    } */
 
     function abrirFormulario(nomeCurso = "") {
         const modal = document.getElementById('modal-inscricao');
@@ -2689,11 +2689,11 @@ function enviarInscricaoModal() {
     }
 </script>
 
-<footer class="bg-white border-t border-[#ba9008] py-12 px-4">
+<footer class="deferred-footer bg-white border-t border-[#ba9008] py-12 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
         
         <div class="flex flex-col items-center md:items-start w-full md:w-auto">
-            <img src="./assets/logo3.webp" alt="Logo Unieuro" class="w-20 h-auto mb-4 object-contain" loading="lazy" decoding="async">
+            <img src="./assets/logo3.webp" alt="Logo Unieuro" class="w-20 h-auto mb-4 object-contain" loading="lazy" decoding="async" width="347" height="325">
             <p class="text-xs text-gray-400 font-light text-center md:text-left leading-relaxed">
                 © 2026 Centro Universitário Euro-Americano.<br>Todos os direitos reservados.
             </p>
