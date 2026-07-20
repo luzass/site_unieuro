@@ -410,6 +410,102 @@
     <link rel="shortcut icon" href="./assets/favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
 
+    <script>
+        (function () {
+            if (typeof window === "undefined") {
+                return;
+            }
+
+            var bridgeLogKey = "__unieuroWebkitBridgeFallback";
+            var safeConsole = window.console || {};
+
+            function registerBridgeUsage(handlerName, payload) {
+                try {
+                    var bridgeHits = window[bridgeLogKey] || [];
+                    bridgeHits.push({
+                        handler: handlerName || "desconhecido",
+                        at: new Date().toISOString(),
+                        payloadType: typeof payload
+                    });
+                    window[bridgeLogKey] = bridgeHits.slice(-20);
+                } catch (_) {}
+            }
+
+            function createFallbackHandler(handlerName) {
+                return {
+                    postMessage: function (payload) {
+                        registerBridgeUsage(handlerName, payload);
+
+                        if (typeof safeConsole.warn === "function") {
+                            safeConsole.warn("[Unieuro] Bridge iOS indisponivel; postMessage ignorado.", {
+                                handler: handlerName || "desconhecido"
+                            });
+                        }
+                    }
+                };
+            }
+
+            if (!window.webkit) {
+                window.webkit = {};
+            }
+
+            if (!window.webkit.messageHandlers) {
+                if (typeof Proxy === "function") {
+                    window.webkit.messageHandlers = new Proxy({}, {
+                        get: function (target, prop) {
+                            if (!Object.prototype.hasOwnProperty.call(target, prop)) {
+                                target[prop] = createFallbackHandler(String(prop));
+                            }
+
+                            return target[prop];
+                        }
+                    });
+                } else {
+                    window.webkit.messageHandlers = {
+                        fallback: createFallbackHandler("fallback")
+                    };
+                }
+            }
+
+            function reportBridgeError(event, error) {
+                var message = "";
+                var stack = "";
+
+                if (event && typeof event.message === "string") {
+                    message = event.message;
+                } else if (error && typeof error.message === "string") {
+                    message = error.message;
+                }
+
+                if (error && typeof error.stack === "string") {
+                    stack = error.stack;
+                }
+
+                if (message.indexOf("webkit.messageHandlers") === -1 && stack.indexOf("webkit.messageHandlers") === -1) {
+                    return;
+                }
+
+                if (typeof safeConsole.error === "function") {
+                    safeConsole.error("[Unieuro] Tentativa de uso de window.webkit.messageHandlers fora de WKWebView.", {
+                        message: message || null,
+                        source: event && event.filename ? event.filename : null,
+                        line: event && event.lineno ? event.lineno : null,
+                        column: event && event.colno ? event.colno : null,
+                        stack: stack || null
+                    });
+                }
+            }
+
+            window.addEventListener("error", function (event) {
+                reportBridgeError(event, event ? event.error : null);
+            });
+
+            window.addEventListener("unhandledrejection", function (event) {
+                reportBridgeError(null, event ? event.reason : null);
+            });
+        })();
+    </script>
+
     <!-- Microsoft Clarity - carregamento adiado -->
     <script>
         window.addEventListener("load", function () {
