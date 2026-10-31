@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap">
-  <link rel="preload" as="image" href="/psicologia/assets/psicologia-unieuro.webp" imagesrcset="/psicologia/assets/psicologia-unieuro-960.webp 960w, /psicologia/assets/psicologia-unieuro.webp 1800w" imagesizes="(min-width: 900px) 50vw, 100vw">
   <link rel="stylesheet" href="/psicologia/styles.css">
   <script src="/psicologia/script.js" defer></script>
 </head>
@@ -42,21 +41,20 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner container">
         <div class="hero-copy">
-          <div class="eyebrow hero-eyebrow"><span class="status-dot"></span> Graduação presencial <span class="eyebrow-separator">/</span> Inscrições abertas</div>
-          <p class="course-name">Psicologia</p>
-          <h1 id="hero-title">Um olhar humano.<br>Muitas <em>possibilidades.</em></h1>
+          <div class="hero-heading">
+            <p class="course-name">Psicologia</p>
+            <h1 id="hero-title">Um olhar humano.<br>Muitas <em>possibilidades.</em></h1>
+          </div>
+          <div class="hero-intro">
           <p class="hero-description">Compreender pessoas é o começo. No UNIEURO, descubra uma formação que conecta ciência, ética e as diferentes formas de cuidar e atuar na sociedade.</p>
           <div class="hero-actions">
             <button type="button" class="button button-blue" data-inscricao="Hero">Inscreva-se <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button>
             <a class="text-link" href="#o-curso">Conheça a formação <span aria-hidden="true">↓</span></a>
           </div>
           <p class="hero-footnote">Seu primeiro passo para estudar Psicologia no UNIEURO.</p>
+          </div>
         </div>
-        <figure class="hero-photo">
-          <img src="/psicologia/assets/psicologia-unieuro.webp" srcset="/psicologia/assets/psicologia-unieuro-960.webp 960w, /psicologia/assets/psicologia-unieuro.webp 1800w" sizes="(min-width: 900px) 50vw, 100vw" alt="Registro no UNIEURO: profissional com microfone em um ambiente acadêmico." width="1800" height="1200" fetchpriority="high" decoding="async">
-          <div class="photo-corner" aria-hidden="true"><span>ψ</span></div>
-          <figcaption><span class="eyebrow">Psicologia · UNIEURO</span><span>Conhecimento que aproxima.<br>Formação que amplia o olhar.</span></figcaption>
-        </figure>
+        <!-- O vídeo de apresentação será integrado aqui quando a produção estiver pronta. -->
       </div>
     </section>
 
@@ -72,7 +70,7 @@
     <section id="o-curso" class="section course-section">
       <div class="container">
         <div class="section-heading split-heading">
-          <div><p class="eyebrow">A escolha de olhar mais de perto</p><h2>Por trás de cada pessoa,<br>um universo a compreender.</h2></div>
+          <div><h2>Por trás de cada pessoa,<br>um universo a compreender.</h2></div>
           <p>Estudar Psicologia é investigar o comportamento, as relações e os processos humanos. É desenvolver uma escuta atenta, um olhar crítico e responsabilidade em cada forma de atuação.</p>
         </div>
         <div class="pillars">
@@ -96,7 +94,6 @@
 
     <section id="enfase" class="section emphasis-section">
       <div class="container">
-        <div class="emphasis-top"><p class="eyebrow">Um aprofundamento com propósito</p><span class="campus-label"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg> Proposta para a Asa Sul</span></div>
         <div class="emphasis-grid">
           <div class="emphasis-copy"><h2>Onde a Psicologia<br>encontra a justiça,<br>as famílias e os <em>direitos.</em></h2><p class="lead">Compreender uma pessoa também exige compreender o contexto em que ela vive.</p><p>A proposta da Asa Sul apresenta a ênfase em <strong>Psicologia, Processos de Avaliação e Intervenção em Contextos Jurídicos</strong>: um aprofundamento ao final da graduação que conecta avaliação psicológica, justiça e proteção social.</p><p>Esse percurso amplia o olhar para situações que envolvem famílias, infâncias, conflitos e garantia de direitos, preservando a base generalista da formação.</p><a class="text-link" href="#campi">Conheça os campi <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a></div>
           <div class="emphasis-content">
@@ -110,6 +107,21 @@
         <div class="emphasis-bottom"><p>Uma graduação generalista.<br><strong>Diferentes caminhos para construir seu olhar profissional.</strong></p><button type="button" class="button button-blue" data-inscricao="Ênfase" data-campus="Asa Sul">Inscreva-se <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button></div>
       </div>
     </section>
+
+    <!-- Ativar após receber nome, titulação, minicurrículo e campi da coordenação. -->
+    <template id="coordenacao-template">
+      <section id="coordenacao" class="section coordinator-section" aria-labelledby="coordenacao-titulo">
+        <div class="container coordinator-grid">
+          <figure class="coordinator-photo">
+            <img src="/psicologia/assets/psicologia-unieuro.webp" srcset="/psicologia/assets/psicologia-unieuro-960.webp 960w, /psicologia/assets/psicologia-unieuro.webp 1800w" sizes="(min-width: 900px) 40vw, 100vw" alt="Coordenador do curso de Psicologia do UNIEURO." width="1800" height="1200" loading="lazy" decoding="async">
+          </figure>
+          <div class="coordinator-bio">
+            <h2 id="coordenacao-titulo">Coordenação do curso</h2>
+            <!-- Inserir somente o nome e o currículo fornecidos pelo responsável. -->
+          </div>
+        </div>
+      </section>
+    </template>
 
     <section id="campi" class="section campus-section">
       <div class="container">
