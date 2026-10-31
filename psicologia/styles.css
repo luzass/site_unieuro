@@ -1590,6 +1590,15 @@ dialog::backdrop {
   object-fit: cover;
   object-position: 52% center;
 }
+.coordinator-bio h3 {
+  margin-top: 24px;
+  color: var(--blue);
+  font-size: 28px;
+}
+.coordinator-bio p {
+  margin-top: 18px;
+  line-height: 1.85;
+}
 @media(max-width:899px) {
   .hero-copy {
     grid-template-columns: 1fr;
