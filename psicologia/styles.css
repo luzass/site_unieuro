@@ -574,11 +574,6 @@ summary::-webkit-details-marker {
   background: #fff;
   position: relative;
 }
-.campus-card-featured {
-  background: #f6f8fa;
-  border-top: 3px solid var(--blue);
-  padding-top: 34px;
-}
 .campus-card-top {
   display: flex;
   justify-content: space-between;
@@ -590,21 +585,11 @@ summary::-webkit-details-marker {
   width: 26px;
   height: 26px;
 }
-.campus-card-top .eyebrow {
-  font-size: 9px;
-  color: #536b7d;
-  letter-spacing: .1em;
-}
 .campus-card h3 {
   font: 400 36px/1.2 var(--sans);
   letter-spacing: -.04em;
   color: var(--blue);
   margin: 20px 0 15px;
-}
-.campus-card>p {
-  font-size: 14px;
-  line-height: 1.85;
-  min-height: 78px;
 }
 .campus-card dl {
   padding: 22px 0;
@@ -1124,15 +1109,6 @@ dialog::backdrop {
   .campus-card {
     padding: 28px;
   }
-  .campus-card-featured {
-    padding-top: 26px;
-  }
-  .campus-card>p {
-    min-height: 100px;
-  }
-  .campus-card-top .eyebrow {
-    font-size: 8px;
-  }
   .campus-card h3 {
     font-size: 32px;
   }
@@ -1373,17 +1349,8 @@ dialog::backdrop {
   .campus-card+.campus-card {
     margin-top: 20px;
   }
-  .campus-card-featured {
-    padding-top: 25px;
-  }
-  .campus-card>p {
-    min-height: 0;
-  }
   .campus-card h3 {
     font-size: 35px;
-  }
-  .campus-card-top .eyebrow {
-    font-size: 8px;
   }
   .campus-card dl {
     margin-top: 20px;
