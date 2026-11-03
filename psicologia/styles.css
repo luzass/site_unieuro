@@ -244,6 +244,22 @@ svg.icon {
   color: var(--blue);
   margin: 0 0 18px;
 }
+.course-location {
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 600;
+  margin: -4px 0 23px;
+}
+.hero-emphasis {
+  color: var(--blue);
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.45;
+  padding-left: 22px;
+  border-left: 3px solid var(--gold);
+}
+.hero-emphasis strong {
+  font-weight: 650;
+}
 .hero h1 {
   font-size: clamp(34px,3.35vw,46px);
   line-height: 1.15;
@@ -564,9 +580,18 @@ summary::-webkit-details-marker {
 .campus-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 26px;
   max-width: 1000px;
   margin-inline: auto;
+  align-items: center;
+  gap: 70px;
+}
+.campus-overview h2 em {
+  color: var(--blue);
+}
+.campus-overview p {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.85;
 }
 .campus-card {
   border: 1px solid var(--line);
@@ -623,13 +648,6 @@ summary::-webkit-details-marker {
   width: 100%;
   justify-content: space-between;
   min-height: 48px;
-}
-.campus-note {
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.8;
-  margin: 24px auto 0;
-  max-width: 730px;
 }
 .admission-section {
   background: #f4f7f9;
@@ -1162,7 +1180,7 @@ dialog::backdrop {
     margin: 0 0 15px;
   }
   .hero h1 {
-    font-size: 36px;
+    font-size: clamp(29px, 8.4vw, 36px);
     line-height: 1.15;
   }
   .hero-description {
@@ -1170,6 +1188,15 @@ dialog::backdrop {
     line-height: 1.85;
     max-width: 480px;
     margin-top: 19px;
+  }
+  .hero-emphasis {
+    font-size: 19px;
+    margin-top: 24px;
+    padding-left: 16px;
+  }
+  .course-location {
+    font-size: 13px;
+    margin-bottom: 20px;
   }
   .hero-actions {
     flex-direction: row;
@@ -1343,6 +1370,9 @@ dialog::backdrop {
   .campus-grid {
     display: block;
   }
+  .campus-overview {
+    margin-bottom: 30px;
+  }
   .campus-card {
     padding: 27px 25px;
   }
@@ -1358,11 +1388,6 @@ dialog::backdrop {
   }
   .campus-card address {
     margin-block: 18px;
-  }
-  .campus-note {
-    text-align: left;
-    font-size: 12px;
-    margin-top: 20px;
   }
   .admission-grid {
     display: block;

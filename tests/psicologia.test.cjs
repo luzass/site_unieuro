@@ -30,7 +30,7 @@ class Element {
 function setup(fetchImpl = async () => ({ ok: true })) {
   const nodes = Object.fromEntries(['inscricao', 'form-inscricao', 'enviar-inscricao', 'form-status', 'continuar-portal', 'nome', 'whatsapp', 'cpf', 'nome-erro', 'whatsapp-erro', 'cpf-erro', 'campus-interesse'].map(id => [id, new Element(id)]));
   const trigger = new Element();
-  trigger.dataset = { inscricao: 'Campi', campus: 'Asa Sul' };
+  trigger.dataset = { inscricao: 'Campus', campus: 'Asa Sul' };
   const selectors = { '.dialog-close': new Element(), '.mobile-cta': new Element(), '.hero': new Element() };
   const timers = new Map();
   const calls = [];
@@ -80,7 +80,7 @@ test('sucesso mantém o contrato, atribui curso/campus e libera continuidade no 
   assert.equal(s.calls.length, 1);
   const payload = JSON.parse(s.calls[0].options.body);
   assert.deepEqual(Object.keys(payload).sort(), ['origem', 'nome', 'whatsapp', 'whatsapp_limpo', 'ddd', 'cpf', 'cpf_limpo', 'campanha', 'data'].sort());
-  assert.equal(payload.origem, 'Psicologia | Asa Sul | Campi');
+  assert.equal(payload.origem, 'Psicologia | Asa Sul | Campus');
   assert.equal(payload.whatsapp_limpo, '61999990000');
   assert.equal(payload.cpf_limpo, '52998224725');
   assert.equal(s.calls[0].options.method, 'POST');
@@ -97,6 +97,17 @@ test('sucesso mantém o contrato, atribui curso/campus e libera continuidade no 
   for (const privateValue of ['Candidato de Teste', '529.982.247-25', '52998224725', '61999990000']) assert.ok(!analytics.includes(privateValue));
   await s.submit();
   assert.equal(s.calls.length, 1, 'não duplica pré-cadastro já confirmado');
+});
+
+test('CTA genérico atribui o pré-cadastro e os eventos exclusivamente à Asa Sul', async () => {
+  const s = setup();
+  s.trigger.dataset = { inscricao: 'Hero' };
+  await s.trigger.emit('click');
+  assert.equal(s.nodes['campus-interesse'].textContent, '· Asa Sul');
+  s.fill();
+  await s.submit();
+  assert.equal(JSON.parse(s.calls[0].options.body).origem, 'Psicologia | Asa Sul | Hero');
+  assert.ok(s.window.dataLayer.every(event => event.campus_interesse === 'Asa Sul'));
 });
 
 for (const [name, response] of [['HTTP 500', async () => ({ ok: false })], ['falha de rede', async () => { throw new Error('offline'); }]]) {

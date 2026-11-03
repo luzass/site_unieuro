@@ -4,6 +4,7 @@
   const WEBHOOK = 'https://casa-oceano-n8n.cj1us3.easypanel.host/webhook/inscr_vest_euro_2026';
   const PORTAL = 'https://portal.apprbs.com.br/unieuro-grad';
   const CAMPAIGN = 'Vestibular Unieuro 2026';
+  const CAMPUS = 'Asa Sul';
   const dialog = document.getElementById('inscricao');
   const form = document.getElementById('form-inscricao');
   const submit = document.getElementById('enviar-inscricao');
@@ -11,8 +12,7 @@
   const portalLink = document.getElementById('continuar-portal');
   const fields = ['nome', 'whatsapp', 'cpf'].map(id => document.getElementById(id));
   const mobileBar = document.querySelector('.mobile-cta');
-  let source = 'Página Psicologia';
-  let campus = '';
+  let source = `Psicologia | ${CAMPUS} | Página`;
   let opener = null;
   let submitting = false;
   let sent = false;
@@ -20,7 +20,7 @@
 
   // Apenas dados de contexto: os eventos nunca recebem os valores dos campos.
   function track(event, extra = {}) {
-    const context = { event, curso: 'Psicologia', origem: source, campus_interesse: campus || 'A definir', campanha: CAMPAIGN, ...extra };
+    const context = { event, curso: 'Psicologia', origem: source, campus_interesse: CAMPUS, campanha: CAMPAIGN, ...extra };
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(context);
     try { if (typeof window.clarity === 'function') window.clarity('event', event); } catch (_) { /* Analytics não bloqueia a inscrição. */ }
@@ -40,13 +40,12 @@
   document.querySelectorAll('[data-inscricao]').forEach(button => {
     button.addEventListener('click', () => {
       if (submitting) return;
-      source = `Psicologia | ${button.dataset.campus || 'Campus a definir'} | ${button.dataset.inscricao}`;
-      campus = button.dataset.campus || '';
+      source = `Psicologia | ${CAMPUS} | ${button.dataset.inscricao}`;
       track('cta_click');
       opener = button;
       clearTimeout(redirectTimer);
       clearFeedback();
-      document.getElementById('campus-interesse').textContent = campus ? `· Interesse: ${campus}` : '';
+      document.getElementById('campus-interesse').textContent = `· ${CAMPUS}`;
       if (sent) {
         status.textContent = 'Pré-cadastro enviado. Continue sua inscrição no portal.';
         status.classList.add('success');
