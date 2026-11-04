@@ -1892,3 +1892,40 @@ dialog {
   .final-action .button { width: 100%; }
   .mobile-cta { box-shadow: 0 -10px 30px -10px #00274e40; }
 }
+
+/* Banner de cookies: mesmo da LP principal, acima da barra de CTA mobile (25) */
+.cookie-banner {
+  position: fixed;
+  left: 1rem; right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10000;
+  max-width: 26rem;
+  padding: 1.1rem 1.15rem;
+  border-radius: 1rem;
+  background: #fff;
+  color: #1f2937;
+  border-top: 3px solid #ba9008;
+  box-shadow: 0 24px 60px -16px rgba(0, 20, 45, .5);
+  font-size: .875rem;
+  line-height: 1.45;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner p { margin: 0 0 .9rem; }
+.cookie-banner .cookie-acoes { display: flex; gap: .6rem; flex-wrap: wrap; }
+.cookie-banner button {
+  flex: 1 1 8rem;
+  min-height: 2.75rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .875rem;
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+.cookie-banner .cookie-todos { background: #ba9008; color: #fff; border: 2px solid #ba9008; }
+.cookie-banner .cookie-todos:hover { background: #a07b06; border-color: #a07b06; }
+.cookie-banner .cookie-essenciais { background: #fff; color: #004181; border: 2px solid #004181; }
+.cookie-banner .cookie-essenciais:hover { background: #eef4fb; }
+.cookie-banner button:focus-visible { outline: 3px solid #004181; outline-offset: 2px; }
+@media (min-width: 768px) { .cookie-banner { right: auto; left: 1.5rem; bottom: 1.5rem; } }
