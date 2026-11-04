@@ -11,6 +11,92 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <link rel="icon" href="/assets/logo3.webp" type="image/webp">
+  <script id="tracking-head">
+  // Mesmo rastreamento da LP principal (index.html): ao mudar um, revise o outro.
+  // Atribuição: guarda UTMs e IDs de clique (Google/Meta) para enviar junto com o lead.
+  (function () {
+    var chaves = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid"];
+    var params = new URLSearchParams(window.location.search);
+    var atribuicao = {};
+    try { atribuicao = JSON.parse(localStorage.getItem("unieuro_atribuicao") || "{}"); } catch (_) {}
+    var nova = {};
+    chaves.forEach(function (chave) {
+      var valor = params.get(chave);
+      if (valor) nova[chave] = valor;
+    });
+    if (Object.keys(nova).length) {
+      nova.landing_page = window.location.href;
+      nova.capturado_em = new Date().toISOString();
+      atribuicao = nova;
+      try { localStorage.setItem("unieuro_atribuicao", JSON.stringify(nova)); } catch (_) {}
+    }
+    window.__unieuroAtribuicao = atribuicao;
+  })();
+
+  // Consent Mode v2: negado até a escolha no banner (a escolha é a mesma da LP principal).
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  (function () {
+    var escolha = null;
+    try { escolha = localStorage.getItem("unieuro_cookies"); } catch (_) {}
+    window.__cookiesEscolha = escolha;
+    gtag("consent", "default", {
+      ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+      analytics_storage: "denied", wait_for_update: 500
+    });
+    // Mantém o gclid na URL entre páginas mesmo sem cookies, para a atribuição não se perder.
+    gtag("set", "url_passthrough", true);
+    if (escolha === "all") {
+      gtag("consent", "update", {
+        ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted"
+      });
+    }
+  })();
+
+  // GTM, Pixel e Clarity. Desenvolvimento local fica sem telemetria externa.
+  (function () {
+    window.iniciarClarity = function () {};
+    if (["localhost", "127.0.0.1", "::1", "[::1]"].indexOf(window.location.hostname) !== -1 || window.location.protocol === "file:") return;
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NJ3XR4DP');
+
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('consent', window.__cookiesEscolha === 'all' ? 'grant' : 'revoke');
+    fbq('init', '1624374258784284');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', { content_name: 'Psicologia UNIEURO', content_category: 'Vestibular' });
+
+    // Clarity usa cookies próprios: só carrega depois de "Aceitar todos".
+    window.iniciarClarity = function () {
+      if (window.__clarityIniciado) return;
+      window.__clarityIniciado = true;
+      setTimeout(function () {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);
+          t.async=1;
+          t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wqlh8jst6p");
+      }, 2000);
+    };
+    if (window.__cookiesEscolha === "all") window.addEventListener("load", window.iniciarClarity);
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1624374258784284&ev=PageView&noscript=1" alt=""></noscript>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap">
@@ -18,6 +104,7 @@
   <script src="/psicologia/script.js" defer></script>
 </head>
 <body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ3XR4DP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
@@ -179,5 +266,12 @@
     </div>
   </dialog>
   <noscript><div class="noscript-note">Para abrir o pré-cadastro, ative o JavaScript ou <a href="https://portal.apprbs.com.br/unieuro-grad">continue sua inscrição diretamente no portal</a>.</div></noscript>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Preferências de cookies" hidden>
+    <p>Usamos cookies para entender como o site é usado e melhorar sua experiência. Você pode aceitar todos ou só os essenciais.</p>
+    <div class="cookie-acoes">
+      <button type="button" class="cookie-todos" data-cookies="all">Aceitar todos</button>
+      <button type="button" class="cookie-essenciais" data-cookies="essential">Apenas essenciais</button>
+    </div>
+  </div>
 </body>
 </html>

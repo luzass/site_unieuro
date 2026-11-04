@@ -5,6 +5,8 @@
   const PORTAL = 'https://portal.apprbs.com.br/unieuro-grad';
   const CAMPAIGN = 'Vestibular Unieuro 2026';
   const CAMPUS = 'Asa Sul';
+  const PIXEL_ID = '1624374258784284';
+  const CHAVE_LEADS_CONVERTIDOS = 'unieuro_leads_convertidos';
   const dialog = document.getElementById('inscricao');
   const form = document.getElementById('form-inscricao');
   const submit = document.getElementById('enviar-inscricao');
@@ -18,9 +20,9 @@
   let sent = false;
   let redirectTimer;
 
-  // Apenas dados de contexto: os eventos nunca recebem os valores dos campos.
+  // Apenas dados de contexto. Única exceção: user_data.phone_number no lead_submit, como na LP principal.
   function track(event, extra = {}) {
-    const context = { event, curso: 'Psicologia', origem: source, campus_interesse: CAMPUS, campanha: CAMPAIGN, ...extra };
+    const context = { event, curso: 'Psicologia', origem: source, campus: CAMPUS, campus_interesse: CAMPUS, campanha: CAMPAIGN, ...extra };
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(context);
     try { if (typeof window.clarity === 'function') window.clarity('event', event); } catch (_) { /* Analytics não bloqueia a inscrição. */ }
@@ -116,6 +118,82 @@
     return firstError === -1;
   }
 
+  // Conversão única e deduplicação: mesmas regras e mesma chave da LP principal.
+  async function hashLead(texto) {
+    try {
+      const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(texto));
+      return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    } catch (_) {
+      return texto.split('').reduce((h, c) => (h * 31 + c.charCodeAt(0)) | 0, 7).toString(16);
+    }
+  }
+  function lerLeadsConvertidos() {
+    try { return JSON.parse(localStorage.getItem(CHAVE_LEADS_CONVERTIDOS) || '[]'); } catch (_) { return []; }
+  }
+  function gerarEventId() {
+    return (window.crypto && window.crypto.randomUUID) ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+  function semAcento(texto) {
+    return (texto || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  }
+  function lerCookie(nome) {
+    const m = document.cookie.match(new RegExp(`(?:^|; )${nome}=([^;]*)`));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  // fbc: cookie do Pixel ou, sem ele, montado com o fbclid da chegada (formato fb.1.<ms>.<fbclid>).
+  function lerFbc() {
+    const cookie = lerCookie('_fbc');
+    if (cookie) return cookie;
+    const a = window.__unieuroAtribuicao || {};
+    return a.fbclid ? `fb.1.${Date.parse(a.capturado_em) || Date.now()}.${a.fbclid}` : '';
+  }
+
+  // Dispara a conversão no Pixel, Clarity e GTM (Google Ads/GA4). Resolve quando o GTM terminou
+  // e o Pixel teve tempo de enviar (mínimo 400 ms), com limite de 1,5 s. Nunca rejeita.
+  function registrarConversao(dados, eventId) {
+    return new Promise(resolve => {
+      let gtmPronto = false;
+      let pixelPronto = false;
+      const tentar = () => { if (gtmPronto && pixelPronto) resolve(); };
+      setTimeout(() => { pixelPronto = true; tentar(); }, 400);
+      setTimeout(resolve, 1500);
+      try {
+        if (typeof window.fbq === 'function') {
+          // Correspondência avançada: o Pixel faz o hash (SHA-256) antes de enviar. CPF nunca entra aqui.
+          const partes = semAcento(dados.nome).split(/\s+/).filter(Boolean);
+          window.fbq('init', PIXEL_ID, {
+            external_id: dados.external_id,
+            ph: `55${dados.whatsapp_limpo}`,
+            fn: partes[0] || '',
+            ln: partes.slice(1).join(' ')
+          });
+          window.fbq('track', 'Lead', {
+            content_name: 'Psicologia UNIEURO', content_category: 'Vestibular', origem: dados.origem, value: 1, currency: 'BRL'
+          }, { eventID: eventId });
+        }
+      } catch (_) { /* Analytics não bloqueia a continuidade. */ }
+      try {
+        if (typeof window.clarity === 'function') {
+          window.clarity('set', 'origem', dados.origem);
+          window.clarity('set', 'campanha', dados.campanha);
+        }
+      } catch (_) { /* Analytics não bloqueia a continuidade. */ }
+      try {
+        track('lead_submit', {
+          status_envio: 'sucesso',
+          event_id: eventId,
+          transaction_id: eventId,
+          value: 1,
+          currency: 'BRL',
+          // Para conversões otimizadas do Google Ads (o GTM faz o hash antes de enviar).
+          user_data: { phone_number: `+55${dados.whatsapp_limpo}` },
+          eventCallback: () => { gtmPronto = true; tentar(); },
+          eventTimeout: 1500
+        });
+      } catch (_) { resolve(); }
+    });
+  }
+
   function continueInPortal() {
     track('registration_continue');
     window.location.assign(PORTAL);
@@ -135,12 +213,28 @@
     fields.forEach(input => { input.readOnly = true; });
     track('pre_registration_submit');
     const [name, phone, cpf] = fields.map(input => input.value.trim());
-    // Curso/campus ficam na origem existente: nenhum campo novo no contrato.
+    const eventId = gerarEventId();
+    const idLead = await hashLead(digits(cpf));
+    const leads = lerLeadsConvertidos();
+    const jaConvertido = leads.includes(idLead);
+    // Mesmo contrato da LP principal. Curso/campus seguem na origem existente.
+    // conversao_unica=false: lead repetido, o n8n NÃO deve enviar Lead ao Meta.
     const payload = {
       origem: source, nome: name, whatsapp: phone,
       whatsapp_limpo: digits(phone), ddd: digits(phone).slice(0, 2),
       cpf, cpf_limpo: digits(cpf), campanha: CAMPAIGN,
-      data: new Date().toLocaleString('pt-BR')
+      data: new Date().toLocaleString('pt-BR'),
+      pagina: window.location.href,
+      event_id: eventId,
+      ...(window.__unieuroAtribuicao || {}),
+      external_id: idLead,
+      conversao_unica: !jaConvertido,
+      fbp: lerCookie('_fbp'),
+      fbc: lerFbc(),
+      user_agent: navigator.userAgent,
+      event_source_url: window.location.href,
+      event_time: Math.floor(Date.now() / 1000),
+      consentimento: window.__cookiesEscolha || 'nao_escolhido'
     };
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
@@ -151,22 +245,22 @@
       });
       if (!response.ok) throw new Error('Envio não confirmado');
       sent = true;
-      // Meta Lead e lead_submit somente após confirmação HTTP bem-sucedida.
-      track('lead_submit', { status_envio: 'sucesso' });
-      try {
-        if (typeof window.fbq === 'function') window.fbq('track', 'Lead', {
-          content_name: 'Psicologia UNIEURO', content_category: 'Vestibular', origem: source
-        });
-      } catch (_) { /* Analytics não bloqueia a continuidade. */ }
       fields.forEach(input => { input.value = ''; });
       status.textContent = 'Pré-cadastro enviado. Você continuará sua inscrição no portal.';
       status.classList.add('success');
       status.hidden = false;
       portalLink.hidden = false;
       submit.textContent = 'Continuar no portal';
+      // Meta Lead e lead_submit somente após confirmação HTTP bem-sucedida e uma vez por CPF.
+      if (jaConvertido) {
+        track('lead_duplicado');
+      } else {
+        try { localStorage.setItem(CHAVE_LEADS_CONVERTIDOS, JSON.stringify([...leads, idLead].slice(-20))); } catch (_) { /* Sem storage, segue. */ }
+        await registrarConversao(payload, eventId);
+      }
       if (dialog.open) redirectTimer = setTimeout(continueInPortal, 900);
     } catch (_) {
-      track('lead_submit_error', { status_envio: 'nao_confirmado' });
+      track('lead_erro_envio', { status_envio: 'nao_confirmado' });
       status.textContent = 'Não conseguimos confirmar o envio do seu pré-cadastro. Você pode tentar novamente ou continuar diretamente no portal.';
       status.hidden = false;
       portalLink.hidden = false;
@@ -187,30 +281,31 @@
     }, { threshold: 0 }).observe(document.querySelector('.hero'));
   }
 
-  // Mesmos identificadores do site principal; desenvolvimento local sem telemetria externa.
-  const local = ['localhost', '127.0.0.1', '::1', '[::1]'].includes(window.location.hostname) || window.location.protocol === 'file:';
-  if (local) return;
-  function loadScript(src) {
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = src;
-    document.head.appendChild(script);
+  // Cliques no WhatsApp viram evento para GTM (GA4/Google Ads) e Meta, como na LP principal.
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    track('whatsapp_click', { link_url: link.href });
+    try { if (typeof window.fbq === 'function') window.fbq('track', 'Contact'); } catch (_) { /* Analytics não bloqueia o contato. */ }
+  });
+
+  // Banner de cookies: mesma chave e mesmo comportamento da LP principal.
+  const banner = document.getElementById('cookie-banner');
+  if (banner) {
+    if (!window.__cookiesEscolha) banner.hidden = false;
+    banner.addEventListener('click', event => {
+      const botao = event.target.closest('[data-cookies]');
+      if (!botao) return;
+      const escolha = botao.getAttribute('data-cookies');
+      const ok = escolha === 'all';
+      try { localStorage.setItem('unieuro_cookies', escolha); } catch (_) { /* Sem storage, vale só nesta visita. */ }
+      window.__cookiesEscolha = escolha;
+      const estado = ok ? 'granted' : 'denied';
+      window.gtag('consent', 'update', { ad_storage: estado, ad_user_data: estado, ad_personalization: estado, analytics_storage: estado });
+      if (typeof window.fbq === 'function') window.fbq('consent', ok ? 'grant' : 'revoke');
+      if (ok) window.iniciarClarity();
+      window.dataLayer.push({ event: 'cookie_consent', consentimento: escolha });
+      banner.hidden = true;
+    });
   }
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-  if (!window.fbq) {
-    const pixel = window.fbq = function () { pixel.callMethod ? pixel.callMethod.apply(pixel, arguments) : pixel.queue.push(arguments); };
-    pixel.queue = []; pixel.loaded = true; pixel.version = '2.0'; window._fbq = pixel;
-    pixel('init', '1624374258784284');
-    pixel('track', 'PageView');
-    pixel('track', 'ViewContent', { content_name: 'Psicologia UNIEURO', content_category: 'Vestibular' });
-  }
-  window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loadScript('https://www.googletagmanager.com/gtm.js?id=GTM-NJ3XR4DP');
-      loadScript('https://connect.facebook.net/en_US/fbevents.js');
-      loadScript('https://www.clarity.ms/tag/wqlh8jst6p');
-    }, 1600);
-  }, { once: true });
 })();

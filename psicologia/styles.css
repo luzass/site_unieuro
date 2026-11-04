@@ -1611,3 +1611,321 @@ dialog::backdrop {
     gap: 4px;
   }
 }
+
+/* ===== Acabamento visual e foco em conversão (mesma paleta, copy e estrutura) ===== */
+:root {
+  --shadow-soft: 0 18px 40px -24px #00274e80;
+  --shadow-lift: 0 26px 50px -26px #00274eb3;
+}
+.button {
+  border-radius: 6px;
+  transition: background .2s, transform .2s, color .2s, box-shadow .2s;
+}
+.button .icon {
+  transition: transform .2s;
+}
+.button:hover .icon {
+  transform: translateX(4px);
+}
+.button-blue {
+  box-shadow: 0 14px 28px -14px #004181d9;
+}
+.button-gold {
+  box-shadow: 0 14px 28px -14px #ba9008d9;
+}
+.button-blue:hover,.button-gold:hover {
+  box-shadow: 0 18px 34px -14px #00274ee6;
+}
+.site-header {
+  box-shadow: 0 8px 28px -16px #00274ecc;
+}
+
+/* Hero: profundidade, marca d'água e entrada única */
+.hero {
+  background:
+    radial-gradient(60% 90% at 88% 8%, #0041811a 0%, transparent 70%),
+    radial-gradient(40% 60% at 4% 100%, #ba90081f 0%, transparent 70%),
+    var(--paper);
+}
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 116px;
+}
+.hero-emphasis {
+  background: linear-gradient(90deg, #ba90081a, transparent 85%);
+  padding-block: 12px;
+  border-radius: 0 6px 6px 0;
+}
+.hero-actions .button {
+  min-height: 60px;
+  padding: 16px 32px;
+  font-size: 15px;
+}
+.hero-heading,.hero-intro {
+  animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-intro {
+  animation-delay: .15s;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Barra de fatos flutuando sobre o hero */
+.course-facts {
+  background: none;
+  border: 0;
+  position: relative;
+  z-index: 2;
+  margin-top: -52px;
+}
+.facts-grid {
+  background: #fff;
+  border-radius: 12px;
+  border-top: 3px solid var(--gold);
+  box-shadow: var(--shadow-lift);
+  padding: 28px 32px;
+}
+.facts-grid dd {
+  font-size: 16px;
+}
+
+/* Pilares */
+.pillars article {
+  background: var(--paper);
+  border: 0;
+  border-top: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 30px 28px 32px;
+  transition: transform .25s, box-shadow .25s;
+}
+.pillars article:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Percurso */
+.journey-section {
+  background: linear-gradient(140deg, #004a94 0%, var(--blue) 45%, var(--navy) 100%);
+}
+.journey-grid {
+  position: relative;
+}
+.journey-marker {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: var(--deep);
+  font-weight: 700;
+  box-shadow: 0 0 0 6px #e1c46a26;
+}
+
+/* Ênfase */
+.learning-item {
+  background: #fff;
+  border: 1px solid #e3e5e1;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: box-shadow .25s, border-color .25s;
+}
+.learning-item summary {
+  padding: 22px 24px;
+}
+.learning-item>div {
+  padding: 0 24px 24px 55px;
+}
+.learning-item[open] {
+  border-color: var(--gold-light);
+  box-shadow: var(--shadow-soft);
+}
+.learning-item summary:hover {
+  color: var(--blue);
+}
+.topic-tag {
+  border: 0;
+  border-radius: 99px;
+  background: var(--paper);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+}
+.academic-note {
+  border-top: 0;
+  padding: 16px 18px;
+  background: #fff;
+  border-left: 3px solid var(--gold-light);
+  border-radius: 0 8px 8px 0;
+  margin-top: 6px;
+}
+.emphasis-bottom {
+  background: #fff;
+  border: 0;
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 28px 36px;
+}
+.emphasis-bottom .button {
+  min-height: 58px;
+  padding-inline: 32px;
+}
+
+/* Campus */
+.campus-card {
+  border: 0;
+  border-top: 4px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lift);
+}
+.campus-card .button {
+  min-height: 56px;
+  font-size: 15px;
+}
+
+/* Ingresso */
+.admission-steps li,.admission-steps li:last-child {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 0 0 14px;
+  box-shadow: 0 10px 24px -20px #00274e80;
+}
+.admission-steps li:last-child {
+  margin-bottom: 0;
+}
+.admission-steps li>span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font: 600 18px/1 var(--sans);
+}
+.admission-steps h3 {
+  margin-top: 0;
+}
+
+/* FAQ */
+.faq-items summary {
+  transition: color .2s;
+}
+.faq-items summary:hover,.faq-items details[open]>summary {
+  color: var(--blue);
+}
+.faq-items details[open]>summary {
+  font-weight: 600;
+}
+.faq-items details[open] .plus {
+  color: var(--gold);
+}
+
+/* CTA final */
+.final-cta {
+  background:
+    radial-gradient(50% 120% at 85% 50%, #e1c46a2e 0%, transparent 65%),
+    linear-gradient(140deg, #004a94 0%, var(--blue) 50%, var(--navy) 100%);
+  padding-block: 92px;
+}
+.final-symbol {
+  color: #ffffff0f;
+}
+.final-action .button {
+  min-height: 66px;
+  font-size: 16px;
+  box-shadow: 0 22px 44px -16px #000000a6;
+}
+
+/* Formulário */
+dialog {
+  border-radius: 12px;
+}
+.form-field input {
+  border-radius: 6px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-field input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #00418124;
+}
+#enviar-inscricao {
+  min-height: 58px;
+  font-size: 15px;
+}
+
+@media(max-width:899px) {
+  .hero-copy { padding-bottom: 96px; }
+  .facts-grid { padding: 24px 22px; }
+  .emphasis-bottom { padding: 24px 26px; }
+}
+@media(max-width:649px) {
+  .hero-copy { padding-bottom: 84px; }
+  .course-facts { margin-top: -40px; }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .hero-actions .button {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 56px;
+  }
+  .hero-actions .text-link {
+    justify-content: center;
+  }
+  .pillars article { margin-bottom: 14px; padding: 26px 24px; }
+  .pillars article:last-child { margin-bottom: 0; padding-bottom: 28px; }
+  .learning-item summary { padding: 20px 18px; }
+  .learning-item>div { padding: 0 18px 22px 46px; }
+  .emphasis-bottom { padding: 22px 22px; }
+  .emphasis-bottom .button { width: 100%; justify-content: space-between; }
+  .admission-steps li, .admission-steps li:last-child { padding: 18px; gap: 16px; }
+  .admission-steps li>span { width: 40px; height: 40px; min-width: 40px; font-size: 16px; }
+  .admission-grid .button { width: 100%; justify-content: space-between; }
+  .final-cta { padding-block: 64px; }
+  .final-action .button { width: 100%; }
+  .mobile-cta { box-shadow: 0 -10px 30px -10px #00274e40; }
+}
+
+/* Banner de cookies: mesmo da LP principal, acima da barra de CTA mobile (25) */
+.cookie-banner {
+  position: fixed;
+  left: 1rem; right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10000;
+  max-width: 26rem;
+  padding: 1.1rem 1.15rem;
+  border-radius: 1rem;
+  background: #fff;
+  color: #1f2937;
+  border-top: 3px solid #ba9008;
+  box-shadow: 0 24px 60px -16px rgba(0, 20, 45, .5);
+  font-size: .875rem;
+  line-height: 1.45;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner p { margin: 0 0 .9rem; }
+.cookie-banner .cookie-acoes { display: flex; gap: .6rem; flex-wrap: wrap; }
+.cookie-banner button {
+  flex: 1 1 8rem;
+  min-height: 2.75rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .875rem;
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+.cookie-banner .cookie-todos { background: #ba9008; color: #fff; border: 2px solid #ba9008; }
+.cookie-banner .cookie-todos:hover { background: #a07b06; border-color: #a07b06; }
+.cookie-banner .cookie-essenciais { background: #fff; color: #004181; border: 2px solid #004181; }
+.cookie-banner .cookie-essenciais:hover { background: #eef4fb; }
+.cookie-banner button:focus-visible { outline: 3px solid #004181; outline-offset: 2px; }
+@media (min-width: 768px) { .cookie-banner { right: auto; left: 1.5rem; bottom: 1.5rem; } }
