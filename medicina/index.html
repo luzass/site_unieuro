@@ -254,6 +254,55 @@
     const WEBHOOK_URL = "https://casa-oceano-n8n.cj1us3.easypanel.host/webhook/inscricao_med";
     const REDIRECT_URL = "https://portaldoaluno.grupoceuma.com.br/FrameHTML/web/app/Edu/PortalProcessoSeletivo/?c=2&f=1ct=23&ps=512#/es/inscricoeswizard/dados-basicos";
 
+    function gerarEventId() {
+      return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : Date.now() + '-' + Math.random().toString(16).slice(2);
+    }
+
+    function lerCookie(nome) {
+      const m = document.cookie.match(new RegExp('(?:^|; )' + nome + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : '';
+    }
+
+    // Conversão: Pixel (Lead) + GTM (lead_submit -> GA4/Google Ads). Resolve quando o GTM terminou
+    // e o Pixel teve 400 ms para enviar, com limite de 1,5 s. Nunca rejeita.
+    function registrarConversao(dados, eventId) {
+      return new Promise(resolve => {
+        let gtmPronto = false;
+        let pixelPronto = false;
+        const tentar = () => { if (gtmPronto && pixelPronto) resolve(); };
+        setTimeout(() => { pixelPronto = true; tentar(); }, 400);
+        setTimeout(resolve, 1500);
+        try {
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead', {
+              content_name: 'LP Medicina Unieuro - Transferência', content_category: 'Graduacao',
+              origem: dados.origem, value: 1, currency: 'BRL'
+            }, { eventID: eventId });
+          }
+        } catch (_) { /* Analytics não bloqueia o redirecionamento. */ }
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'lead_submit',
+            event_id: eventId,
+            transaction_id: eventId,
+            value: 1,
+            currency: 'BRL',
+            curso: 'medicina',
+            ingresso: 'transferencia-externa',
+            campus: 'asa-sul',
+            modalidade: 'presencial',
+            origem: dados.origem,
+            campanha: dados.campanha,
+            formId: 'medicina-transferencia-2026-2',
+            user_data: { phone_number: '+55' + dados.whatsapp_limpo },
+            eventCallback: () => { gtmPronto = true; tentar(); },
+            eventTimeout: 1500
+          });
+        } catch (_) { resolve(); }
+      });
+    }
+
     function maskWhatsapp(value) {
       const digits = value.replace(/\D/g, '').slice(0, 11);
 
@@ -351,6 +400,7 @@
         const botao = form.querySelector('button[type="submit"]');
         const textoOriginalBotao = botao ? botao.innerHTML : '';
 
+        const eventId = gerarEventId();
         const payload = {
           origem: `Medicina - ${form.dataset.form || 'form'}`,
           nome: nome.value.trim(),
@@ -361,26 +411,15 @@
           curso: 'Medicina',
           ingresso: 'Transferência Externa',
           campanha: 'Medicina Unieuro Brasilia 2026.2',
-          data: new Date().toLocaleString('pt-BR')
+          data: new Date().toLocaleString('pt-BR'),
+          pagina: window.location.href,
+          event_id: eventId,
+          fbp: lerCookie('_fbp'),
+          fbc: lerCookie('_fbc'),
+          user_agent: navigator.userAgent,
+          event_source_url: window.location.href,
+          event_time: Math.floor(Date.now() / 1000)
         };
-
-        if (window.fbq) {
-          fbq('track', 'Lead', {
-            content_name: 'LP Medicina Unieuro - Transferência',
-            content_category: 'Graduacao'
-          });
-        }
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'lead_submit',
-          curso: 'medicina',
-          ingresso: 'transferencia-externa',
-          campus: 'asa-sul',
-          modalidade: 'presencial',
-          origem: payload.origem,
-          formId: 'medicina-transferencia-2026-2'
-        });
 
         try {
           if (botao) {
@@ -389,15 +428,17 @@
             botao.classList.add('opacity-70', 'cursor-not-allowed');
           }
 
-          await fetch(WEBHOOK_URL, {
+          const resposta = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
+          if (!resposta.ok) throw new Error('Webhook respondeu ' + resposta.status);
+          await registrarConversao(payload, eventId);
         } catch (err) {
           console.error('Erro ao enviar lead:', err);
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'lead_erro_envio', origem: payload.origem });
         } finally {
           window.location.href = REDIRECT_URL;
 
@@ -419,5 +460,6 @@
       });
     });
   </script>
+  <script src="/assets/js/engajamento.js" data-nome="LP Medicina Unieuro - Transferência" data-curso="Medicina" data-categoria="Graduacao" defer></script>
 </body>
 </html>

@@ -75,7 +75,6 @@
     fbq('consent', window.__cookiesEscolha === 'all' ? 'grant' : 'revoke');
     fbq('init', '1624374258784284');
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent', { content_name: 'Psicologia UNIEURO', content_category: 'Vestibular' });
 
     // Clarity usa cookies próprios: só carrega depois de "Aceitar todos".
     window.iniciarClarity = function () {
@@ -102,6 +101,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap">
   <link rel="stylesheet" href="/psicologia/styles.css">
   <script src="/psicologia/script.js" defer></script>
+  <script src="/assets/js/engajamento.js" data-nome="Psicologia UNIEURO" data-curso="Psicologia" defer></script>
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ3XR4DP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
