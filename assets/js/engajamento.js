@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   var cfg = (document.currentScript && document.currentScript.dataset) || {};
-  var base = { content_name: cfg.nome || document.title, content_category: cfg.categoria || 'Vestibular', curso: cfg.curso || '' };
+  var base = { content_name: cfg.nome || document.title, content_category: cfg.categoria || 'Vestibular', curso: cfg.curso || '', campus: 'asa-sul', origem: 'engajamento' };
   var LIMITE = 0.5;
   var SEGUNDOS = 30;
   var viu = false;
