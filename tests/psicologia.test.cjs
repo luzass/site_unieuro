@@ -164,12 +164,8 @@ test('CPF nunca chega à analytics e telefone só vai em user_data e na correspo
   assert.equal(s.window.dataLayer.filter(e => JSON.stringify(e).includes('61999990000')).length, 1);
   const pixels = JSON.stringify(s.pixels);
   for (const value of ['529.982.247-25', '52998224725']) assert.ok(!pixels.includes(value));
-  const init = s.pixels.find(e => e[0] === 'init');
-  assert.equal(init[1], '1624374258784284');
-  assert.equal(init[2].ph, '5561999990000');
-  assert.equal(init[2].fn, 'candidato');
-  assert.equal(init[2].ln, 'de teste');
-  assert.match(init[2].external_id, /^[0-9a-f]{64}$/);
+  // Sem segundo init: reinicializar o Pixel com dados de usuário fazia o Meta descartar o Lead.
+  assert.ok(!s.pixels.some(e => e[0] === 'init'));
   assert.ok(!JSON.stringify(s.pixels.filter(e => e[0] === 'track')).includes('61999990000'));
 });
 
@@ -370,15 +366,6 @@ test('clique no WhatsApp gera whatsapp_click e Contact; outros cliques não', ()
   assert.equal(evento.link_url, link.href);
   assert.equal(evento.curso, 'Psicologia');
   assert.deepEqual(s.pixels.at(-1), ['track', 'Contact']);
-});
-
-test('correspondência avançada do Pixel tira acentos do nome', async () => {
-  const s = setup();
-  await s.trigger.emit('click'); s.fill(); s.nodes.nome.value = 'João Conceição';
-  await s.submit();
-  const init = s.pixels.find(e => e[0] === 'init');
-  assert.equal(init[2].fn, 'joao');
-  assert.equal(init[2].ln, 'conceicao');
 });
 
 test('banner fica oculto para quem já escolheu', () => {

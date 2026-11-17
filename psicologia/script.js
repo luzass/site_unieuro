@@ -5,7 +5,6 @@
   const PORTAL = 'https://portal.apprbs.com.br/unieuro-grad';
   const CAMPAIGN = 'Vestibular Unieuro 2026';
   const CAMPUS = 'Asa Sul';
-  const PIXEL_ID = '1624374258784284';
   const CHAVE_LEADS_CONVERTIDOS = 'unieuro_leads_convertidos';
   const dialog = document.getElementById('inscricao');
   const form = document.getElementById('form-inscricao');
@@ -133,9 +132,6 @@
   function gerarEventId() {
     return (window.crypto && window.crypto.randomUUID) ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
   }
-  function semAcento(texto) {
-    return (texto || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
-  }
   function lerCookie(nome) {
     const m = document.cookie.match(new RegExp(`(?:^|; )${nome}=([^;]*)`));
     return m ? decodeURIComponent(m[1]) : '';
@@ -159,14 +155,7 @@
       setTimeout(resolve, 1500);
       try {
         if (typeof window.fbq === 'function') {
-          // Correspondência avançada: o Pixel faz o hash (SHA-256) antes de enviar. CPF nunca entra aqui.
-          const partes = semAcento(dados.nome).split(/\s+/).filter(Boolean);
-          window.fbq('init', PIXEL_ID, {
-            external_id: dados.external_id,
-            ph: `55${dados.whatsapp_limpo}`,
-            fn: partes[0] || '',
-            ln: partes.slice(1).join(' ')
-          });
+          // Sem segundo fbq('init'): reinicializar o mesmo Pixel com dados de usuário fazia o Meta descartar o Lead.
           window.fbq('track', 'Lead', {
             content_name: 'Psicologia UNIEURO', content_category: 'Vestibular', origem: dados.origem, value: 1, currency: 'BRL'
           }, { eventID: eventId });

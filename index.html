@@ -2264,14 +2264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             try {
                 if (typeof fbq === "function") {
-                    // Correspondencia avancada: o Pixel faz o hash (SHA-256) de telefone, nome e external_id antes de enviar
-                    const partes = semAcento(dados.nome).split(/\s+/).filter(Boolean);
-                    fbq("init", "1624374258784284", {
-                        external_id: dados.external_id,
-                        ph: "55" + dados.whatsapp_limpo,
-                        fn: partes[0] || "",
-                        ln: partes.slice(1).join(" ")
-                    });
+                    // Sem segundo fbq("init"): reinicializar o mesmo Pixel com dados de usuario fazia o Meta descartar o Lead.
                     fbq("track", "Lead", {
                         content_name: "Vestibular Unieuro 2026",
                         content_category: "Vestibular",
